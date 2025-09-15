@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 
 class HelperFunction {
@@ -14,6 +15,24 @@ class HelperFunction {
 
   static double screenWidth(BuildContext context){
     return MediaQuery.of(context).size.width;
+  }
+
+  static String formatDate(dynamic date, {String format = 'yyyy-MM-dd'}) {
+    try {
+      DateTime parsedDate;
+
+      if (date is String) {
+        parsedDate = DateTime.parse(date);
+      } else if (date is DateTime) {
+        parsedDate = date;
+      } else {
+        throw Exception("Invalid date type");
+      }
+
+      return DateFormat(format).format(parsedDate);
+    } catch (e) {
+      return date.toString();
+    }
   }
 
 }

@@ -10,7 +10,7 @@ class CustomDropdown<T> extends FormField<T> {
     String hint = "Select an item",
     FormFieldValidator<T>? validator,
     bool enabled = true,
-    // ✅ Only color customization
+    bool isLoading = false,
     Color? dropdownColor,
     Color? borderColor,
     Color? textColor,
@@ -20,7 +20,7 @@ class CustomDropdown<T> extends FormField<T> {
     key: key,
     initialValue: selected,
     validator: validator,
-    enabled: enabled,
+    enabled: enabled && !isLoading,
     builder: (FormFieldState<T> state) {
       final _layerLink = LayerLink();
       OverlayEntry? _overlayEntry;
@@ -44,8 +44,10 @@ class CustomDropdown<T> extends FormField<T> {
         final spaceBelow = screenHeight - offset.dy - size.height;
         final spaceAbove = offset.dy;
 
-        final bool showAbove = spaceBelow < dropdownMaxHeight && spaceAbove > dropdownMaxHeight;
+        // final bool showAbove = spaceBelow < dropdownMaxHeight && spaceAbove > dropdownMaxHeight;
 
+        final estimatedHeight = (items.length * 48.0).clamp(0, dropdownMaxHeight);
+        final bool showAbove = spaceBelow < estimatedHeight && spaceAbove > estimatedHeight;
         return OverlayEntry(
           builder: (context) => Positioned(
             width: size.width,
@@ -95,6 +97,7 @@ class CustomDropdown<T> extends FormField<T> {
           builder: (context) {
             return GestureDetector(
               onTap: () {
+                if(isLoading) return;
                 if (_isOpen) {
                   _closeDropdown();
                 } else {
@@ -117,11 +120,24 @@ class CustomDropdown<T> extends FormField<T> {
                       color: borderColor ?? Colors.grey,
                     ),
                   ),
-                  errorText: state.errorText,
+                  errorText:  state.hasError ? state.errorText : null,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    isLoading
+                        ? Row(
+                      children: const [
+                        SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                        SizedBox(width: 8),
+                        Text("Loading..."),
+                      ],
+                    )
+                        :
                     Text(
                       state.value != null
                           ? itemLabel(state.value as T)
@@ -135,7 +151,7 @@ class CustomDropdown<T> extends FormField<T> {
                     ),
                     Icon(
                       Icons.arrow_drop_down,
-                      color: iconColor ?? Colors.black,
+                      color:  isLoading ? Colors.grey : iconColor ?? Colors.black,
                     ),
                   ],
                 ),

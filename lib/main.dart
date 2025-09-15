@@ -10,11 +10,14 @@ import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorageService.init();
-  await UserSessions.init();
 
   runApp(
       MultiProvider(
-        providers: AppProvider.providers,
+        providers: [
+          ...AppProvider.providers,
+        ChangeNotifierProvider(
+            create: (_) => UserSessionProvider()..init())
+        ],
       child: const MyApp()));
 }
 

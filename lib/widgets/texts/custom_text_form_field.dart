@@ -66,14 +66,15 @@ class _AppTextFiledState extends State<AppTextFiled> {
 
     return TextFormField(
       controller: widget.controller,
-      keyboardType: widget.keyboardType,
+      keyboardType: widget.keyboardType??(widget.maxLines > 1 ? TextInputType.multiline : TextInputType.text),
       obscureText: _obscure,
       validator: widget.validator,
       onChanged: widget.onChanged,
       onFieldSubmitted: widget.onFieldSubmitted,
-      textInputAction: TextInputAction.next,
+      textInputAction: widget.maxLines > 1 ? TextInputAction.newline: TextInputAction.next,
       autocorrect: false,
       enableSuggestions: !widget.obscureText,
+      minLines: widget.maxLines,
       maxLines: widget.obscureText ? 1 : widget.maxLines,
       decoration: InputDecoration(
         label:  RichText(

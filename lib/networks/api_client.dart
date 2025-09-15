@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/configs/routes.dart';
 import 'package:z_tutor_suganta/configs/url.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 import '../utils/helpers/logger_helper.dart';
+import '../utils/helpers/user_sessions.dart';
 
 class DioClient {
   static final DioClient _instance = DioClient._internal();
@@ -52,7 +54,11 @@ class DioClient {
 
 
           if (e.response?.statusCode == 401) {
-          await LocalStorageService.clearAuthDataRedirect();
+           // await LocalStorageService.clearAuthDataRedirect();
+           final context = AppRouter.rootNavigatorKey.currentContext;
+           if (context != null) {
+             context.read<UserSessionProvider>().logout();
+           }
             return handler.next(e);
           }
 

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/get_user_profile_provider.dart';
 import 'package:z_tutor_suganta/utils/constants/image_strings.dart';
 import 'package:z_tutor_suganta/utils/helpers/logger_helper.dart';
+import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';
 import 'package:z_tutor_suganta/widgets/images/circular_images.dart';
 
 import '../../configs/url.dart';
@@ -16,8 +17,10 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<GetUserProfileProvider>();
-    final user = provider.user;
+    // final provider = context.watch<GetUserProfileProvider>();
+    final provider = context.watch<UserSessionProvider>();
+
+    final user = provider.currentUser;
 
     
     if(user == null){
@@ -28,10 +31,10 @@ class UserProfileTile extends StatelessWidget {
       );
     }
     
-    final bool hasProfileImage = user!.profileImage != null && user!.profileImage!.isNotEmpty;
+    final bool hasProfileImage = user.profileImage != null && user.profileImage!.isNotEmpty;
 
     if (hasProfileImage) {
-      final profileImageUrl = "${ApiUrls.mediaUrl}${user!.profileImage!}";
+      final profileImageUrl = "${ApiUrls.mediaUrl}${user.profileImage!}";
       LoggerHelper.info("Profile Image Url -->> $profileImageUrl");
     }
 
@@ -41,12 +44,12 @@ class UserProfileTile extends StatelessWidget {
           width: 80,
           height: 80,
           padding: 0,
-        isNetworkImage: hasProfileImage,
+        fallbackAsset: AppImages.userIcon,
         image: hasProfileImage
-            ? "${ApiUrls.mediaUrl}${user.profileImage!}"
-            : AppImages.userIcon,
+            ? user.profileImage!
+            : null,
       ),
-      title: Text(user.name, style: Theme.of(context).textTheme.headlineMedium!.apply(color: AppColors.white),),
+      title: Text("${user.firstName} ${user.lastName}", style: Theme.of(context).textTheme.headlineMedium!.apply(color: AppColors.white),),
       subtitle: Text(user.email, style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white, fontWeight: FontWeight.w700 ),),
       trailing: IconButton(onPressed: onPressed, icon: const Icon(FontAwesomeIcons.edit, color: AppColors.white,),),
     );

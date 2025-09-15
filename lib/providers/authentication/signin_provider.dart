@@ -4,12 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/get_user_profile_provider.dart';
 import 'package:z_tutor_suganta/repository/authentication_repo.dart';
 import 'package:z_tutor_suganta/utils/helpers/logger_helper.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 
 import '../../utils/constants/text_strings.dart';
+import '../../utils/helpers/user_sessions.dart';
 import '../../widgets/dialog/custom_dialog.dart';
 
 class SignInProvider extends ChangeNotifier{
@@ -49,7 +51,16 @@ class SignInProvider extends ChangeNotifier{
 
        await LocalStorageService.saveToken(token);
 
-       await getUserProfileProvider.fetchUserProfile();
+       await getUserProfileProvider.fetchUserProfile(context);
+       await getUserProfileProvider.fetchSocialProfile(context);
+
+       final userRole = context.read<UserSessionProvider>().role?.toLowerCase();
+        if (userRole == "teacher") {
+          await getUserProfileProvider.fetchTeacherProfile(context);
+        }
+        if(userRole == 'institute'){
+          await getUserProfileProvider.fetchInstituteProfile(context);
+        }
 
         final localSavedToken = await LocalStorageService.getToken();
 

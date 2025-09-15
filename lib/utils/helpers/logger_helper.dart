@@ -1,5 +1,6 @@
+
 import 'package:logger/logger.dart';
-import 'package:flutter/foundation.dart'; // for kReleaseMode
+import 'package:flutter/foundation.dart';
 
 class LoggerHelper {
   static final Logger _logger = Logger(
@@ -24,4 +25,7 @@ class LoggerHelper {
       _logger.e(message, error: error,);
     }
   }
+
+
+
 }

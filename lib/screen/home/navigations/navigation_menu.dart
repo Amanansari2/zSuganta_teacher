@@ -8,6 +8,8 @@ import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 
+import '../../../utils/helpers/user_sessions.dart';
+
 class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});
 
@@ -23,7 +25,19 @@ class _NavigationMenuState extends State<NavigationMenu> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final token = LocalStorageService.getToken();
       if(token != null && token.isNotEmpty){
-        await context.read<GetUserProfileProvider>().fetchUserProfile();
+        final profileProvider = context.read<GetUserProfileProvider>();
+        await profileProvider.fetchUserProfile(context);
+        await profileProvider.fetchSocialProfile(context);
+
+        final userRole = context.read<UserSessionProvider>().role?.toLowerCase();
+
+        if (userRole == "teacher") {
+          await profileProvider.fetchTeacherProfile(context);
+        }
+
+        if(userRole == 'institute'){
+          await profileProvider.fetchInstituteProfile(context);
+        }
       }
     });
 

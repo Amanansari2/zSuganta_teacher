@@ -22,6 +22,19 @@ class AppText{
   static const String displayName = "Display Name";
   static const String enterDisplayName = "Enter your display name";
 
+  static const String address = "Address";
+  static const String enterAddress = "Enter your address....";
+  static const String area = "Area/Locality";
+  static const String enterArea = "Enter your area....";
+  static const String city = "City";
+  static const String enterCity = "Enter your city....";
+  static const String state = "State";
+  static const String enterState = "Enter your state....";
+  static const String pinCode = "PinCode";
+  static const String enterPin = "Enter your pin....";
+  static const String description = "Description";
+  static const String enterDescription = "Tell us about yourself....";
+
   static const String emailAddress = "Email Address";
   static const String enterEmail = "Enter your email address";
 
@@ -33,6 +46,11 @@ class AppText{
 
   static const String password = "Password";
   static const String passwordHint = "Example@123";
+
+  static const String oldPassword = "Old Password";
+  static const String oldPasswordHint = "Enter old password";
+
+  static const String newPassword = "New Password";
 
   static const String confirmPassword = "Confirm Password";
   static const String enterConfirmPassword = "Confirm your password";
@@ -90,6 +108,7 @@ class AppText{
   static const String newSecurePassword  = "Create a new secure password and keep your account safe";
 
   static const String activeSessions  = "Active Sessions";
+  static const String allSessions  = "All Sessions";
   static const String seeDevicesLogged  = "See devices where your account is logged in";
 
   static const String updateProfile  = "Update Profile";
@@ -97,9 +116,85 @@ class AppText{
 
   static const String gender  = "Gender ";
 
+  static const String updateSocial  = "Update Social Profile";
+  static const String facebookUrl = "FaceBook Profile URL";
+  static const String enterFacebookUrl = "Enter your facebook profile url";
+  static const String twitterUrl = "Twitter Profile URL";
+  static const String enterTwitterUrl = "Enter your twitter profile url";
+  static const String instagramUrl = "Instagram Profile URL";
+  static const String enterInstagramUrl = "Enter your instagram profile url";
+  static const String linkedinUrl = "Linkedin Profile URL";
+  static const String enterLinkedinUrl = "Enter your linkedin profile url";
+  static const String youtubeUrl = "YouTube Channel URL";
+  static const String enterYoutubeUrl = "Enter your youtube channel url";
+  static const String websiteUrl = "WebSite URL";
+  static const String enterWebsiteUrl = "Enter your website url";
+  static const String whatsappNumber = "WhatsApp Number";
+  static const String enterWhatsappNumber = "Enter your WhatsApp Number";
+  static const String telegramName = "Telegram User Name";
+  static const String enterTelegramName = "Enter your telegram user name";
+  static const String saveSocialProfile = "Save Social Profile";
 
+  static const String highestQualification = "Highest Qualification";
+  static const String selectHighestQualification = "Select Highest Qualification";
 
+  static const String universityCollegeName = "University / College Name";
+  static const String enterUniversityCollegeName = "Enter your university or college name";
 
+  static const String fieldOfStudy = "Field of Study";
+  static const String selectFieldStudy = "Select study field";
 
+  static const String graduationYear = "Graduation year";
+  static const String enterGraduationYear = "Enter your graduation Year";
+
+  static const String teachingExperience = "Teaching Experience";
+  static const String selectTeachingExperience = "Select teaching experience";
+
+  static const String hourlyRateRange = "Hourly Rate Range";
+  static const String selectHourlyRate = "Select hourly rate";
+
+  static const String monthlyRateRange = "Monthly Rate Range";
+  static const String selectMonthlyRate = "Select Monthly rate";
+
+  static const String travelRadius = "Travel Radius";
+  static const String selectTravelRadius = "Select travel radius";
+
+  static const String teachingMode = "Teaching Mode";
+  static const String selectTeachingMode = "Select teaching mode";
+
+  static const String availabilityStatus = "Availability Status";
+  static const String selectAvailabilityStatus = "Select availability status";
+
+  static const String teachingPhilosophy = "Teaching Philosophy";
+  static const String teachingApproachPhilosophy = "Describe your teaching approach and philosophy...";
+
+  static const String saveTeachingInfo = "Save Teaching Info";
+  static const String saveInstituteInfo = "Save Institute Info";
+
+  static const String instituteName = "Institute Name";
+  static const String enterInstituteName = "Enter your institute name";
+
+  static const String principalDirectorName = "Principal/Director Name";
+  static const String enterPrincipalDirectorName = "Enter principal/director name";
+
+  static const String principalPhone = "Principal Phone";
+
+  static const String instituteType = "Institute Type";
+  static const String selectInstituteType = "Select Type";
+
+  static const String category = "Category";
+  static const String selectCategory = "Select Category";
+
+  static const String establishmentYearRange = "Establishment Year Range";
+  static const String selectEstablishmentYearRange = "Select Establishment Year Range";
+
+  static const String totalStudentRange = "Total Students Range";
+  static const String selectStudentRange = "Select Student Range";
+
+  static const String totalTeacherRange = "Total Teachers Range";
+  static const String selectTeacherRange = "Select Teacher Range";
+
+  static const String instituteDescription = "Institute Description";
+  static const String describeYourInstitute = "Describe your institute...";
 
 }

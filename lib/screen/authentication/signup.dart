@@ -314,14 +314,6 @@ class SignUpScreen extends StatelessWidget {
 
                     const SizedBox(height: Sizes.iconMd),
 
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Flexible(child: Divider(color: dark ? AppColors.lightGrey : AppColors.darkGrey, thickness: 0.6, indent: 10, endIndent: 5,) ),
-                    //     Text(AppText.or, style: Theme.of(context).textTheme.headlineMedium,),
-                    //     Flexible(child: Divider(color: dark ? AppColors.lightGrey : AppColors.darkGrey, thickness: 0.6, indent: 5, endIndent: 10,) )
-                    //   ],
-                    // ),
 
                     const SizedBox(height: Sizes.defaultSpace),
 

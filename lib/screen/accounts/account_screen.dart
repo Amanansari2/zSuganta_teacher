@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/constants/text_strings.dart';
 import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';
@@ -19,7 +20,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final userRole = UserSessions.role;
+    final userRole =context.watch<UserSessionProvider>().role.toLowerCase();
 
     return Scaffold(
       body: Column(
@@ -38,7 +39,9 @@ class AccountScreen extends StatelessWidget {
 
 
                   UserProfileTile(
-                      onPressed: (){}
+                      onPressed: (){
+                        context.pushNamed('emailMobileScreen');
+                      }
                   ),
 
                   const SizedBox(height: Sizes.spaceBtwSections),
@@ -68,7 +71,9 @@ class AccountScreen extends StatelessWidget {
                           icon: FontAwesomeIcons.shareNodes,
                           title: AppText.socialLinks,
                           subTitle: AppText.socialProfile,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('socialScreen');
+                          },
                         ),
 
                         if(userRole == 'teacher')
@@ -76,7 +81,9 @@ class AccountScreen extends StatelessWidget {
                           icon: FontAwesomeIcons.graduationCap,
                           title: AppText.teachingInformation,
                           subTitle: AppText.subjectExperienceQualification,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('teachingInformationScreen');
+                          },
                         ),
 
                         if(userRole == 'institute')
@@ -84,10 +91,12 @@ class AccountScreen extends StatelessWidget {
                           icon: FontAwesomeIcons.building,
                           title: AppText.instituteInformation,
                           subTitle: AppText.manageInstituteProfile,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('instituteInformationScreen');
+                          },
                         ),
 
-                        if(userRole == 'ngo')
+                        if(userRole == 'university')
                         SettingMenuTile(
                           icon: FontAwesomeIcons.handsHelping,
                           title: AppText.ngoInformation,
@@ -99,21 +108,27 @@ class AccountScreen extends StatelessWidget {
                           icon: FontAwesomeIcons.addressCard,
                           title: AppText.updateContact,
                           subTitle: AppText.editContactInformation,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('emailMobileScreen');
+                          },
                         ),
 
                         SettingMenuTile(
                           icon: FontAwesomeIcons.shieldHalved,
                           title: AppText.resetPassword,
                           subTitle: AppText.newSecurePassword,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('resetPasswordScreen');
+                          },
                         ),
 
                         SettingMenuTile(
                           icon: FontAwesomeIcons.userLock,
-                          title: AppText.activeSessions,
+                          title: AppText.allSessions,
                           subTitle: AppText.seeDevicesLogged,
-                          onTap: (){},
+                          onTap: (){
+                            context.pushNamed('sessionsScreen');
+                          },
                         ),
 
 

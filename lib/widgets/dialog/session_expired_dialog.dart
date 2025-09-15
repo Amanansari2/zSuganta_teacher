@@ -45,7 +45,7 @@ class SessionOverlay {
                     mainAxisSize: MainAxisSize.min,
                     children: const [
                       Text(
-                        "Session expired \nPlease login again",
+                        "Session expired \nLogout Successfully \nPlease login again",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.white),
                       ),

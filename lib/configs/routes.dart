@@ -4,7 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/forgot_password_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signin_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signup_provider.dart';
+import 'package:z_tutor_suganta/screen/accounts/email_mobile/email_mobile_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/institute_information/institute_information_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/password/reset_password.dart';
 import 'package:z_tutor_suganta/screen/accounts/profile/update_profile.dart';
+import 'package:z_tutor_suganta/screen/accounts/sessions/sessions_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/teaching_information/teaching_information_screen.dart';
 import 'package:z_tutor_suganta/screen/authentication/resend_email.dart';
 import 'package:z_tutor_suganta/screen/authentication/signin.dart';
 import 'package:z_tutor_suganta/screen/authentication/signup.dart';
@@ -16,6 +21,7 @@ import 'package:z_tutor_suganta/screen/support/support_screen.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 
 import '../screen/accounts/account_screen.dart';
+import '../screen/accounts/social/social_screen.dart';
 import '../screen/authentication/forgot_password.dart';
 
 class AppRouter{
@@ -101,6 +107,42 @@ class AppRouter{
             name: 'updateProfileScreen',
             path: '/updateProfileScreen',
             builder: (context, state) => UpdateProfileScreen(),
+          ),
+
+          GoRoute(
+            name: 'socialScreen',
+            path: '/socialScreen',
+            builder: (context, state) => SocialScreen(),
+          ),
+
+          GoRoute(
+            name: 'teachingInformationScreen',
+            path: '/teachingInformationScreen',
+            builder: (context, state) => TeachingInformationScreen(),
+          ),
+
+          GoRoute(
+            name: 'instituteInformationScreen',
+            path: '/instituteInformationScreen',
+            builder: (context, state) => InstituteInformationScreen(),
+          ),
+
+          GoRoute(
+            name: 'emailMobileScreen',
+            path: '/emailMobileScreen',
+            builder: (context, state) => EmailMobileScreen(),
+          ),
+
+          GoRoute(
+            name: 'resetPasswordScreen',
+            path: '/resetPasswordScreen',
+            builder: (context, state) => ResetPasswordScreen(),
+          ),
+
+          GoRoute(
+            name: 'sessionsScreen',
+            path: '/sessionsScreen',
+            builder: (context, state) => SessionsScreen(),
           ),
 
 
