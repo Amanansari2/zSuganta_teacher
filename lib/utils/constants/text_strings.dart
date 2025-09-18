@@ -97,8 +97,8 @@ class AppText{
   static const String instituteInformation = "Institute Information";
   static const String manageInstituteProfile  = "Manage your institute’s profile and information";
 
-  static const String ngoInformation = "NGO Information";
-  static const String manageNgoProfile  = "Manage your NGO’s profile and information";
+  static const String universityInformation = "University Information";
+  static const String manageUniversityProfile  = "Manage your university’s profile and information";
 
   static const String updateContact  = "Email & Mobile";
   static const String editContactInformation  = "Edit your contact information anytime";
@@ -174,13 +174,18 @@ class AppText{
   static const String instituteName = "Institute Name";
   static const String enterInstituteName = "Enter your institute name";
 
+  static const String universityName = "University Name";
+  static const String enterUniversityName = "Enter your university name";
+
   static const String principalDirectorName = "Principal/Director Name";
   static const String enterPrincipalDirectorName = "Enter principal/director name";
 
   static const String principalPhone = "Principal Phone";
 
   static const String instituteType = "Institute Type";
-  static const String selectInstituteType = "Select Type";
+  static const String selectType = "Select Type";
+
+  static const String universityType = "University Type";
 
   static const String category = "Category";
   static const String selectCategory = "Select Category";
@@ -196,5 +201,85 @@ class AppText{
 
   static const String instituteDescription = "Institute Description";
   static const String describeYourInstitute = "Describe your institute...";
+
+  static const String universityDescription = "University Description";
+  static const String describeYourUniversity = "Describe your University...";
+
+  static const String support = "Support";
+  static const String needAssistance = "Need Assistance ?";
+  static const String fillFormBelow = "Fill out the form below and our support team will get back to you promptly.";
+
+  static const String priority = "Priority";
+  static const String priorityLevel = "Select priority level";
+
+  static const String message = "Message";
+  static const String messageDetailed = "Please provider detailed information about your issue. Include any relevant details, steps to reproduce, and what you've already tried...";
+
+
+  static const String needHelp = "Need Help ?";
+  static const String everythingNeedToKnow = "Everything you need to know about creating effective support tickets";
+
+
+  static const String responseTimes = "Response Times";
+  static const String urgent = "URGENT";
+  static const String within2hours = "Within 2 hours";
+  static const String criticalIssue = "Critical issue";
+
+  static const String high = "HIGH";
+  static const String within24hours = "Within 24 hours";
+  static const String importantIssue = "Important issue";
+
+  static const String medium = "MEDIUM";
+  static const String within48hours = "Within 48 hours";
+  static const String generalInquiries = "General inquiries";
+
+  static const String low = "LOW";
+  static const String within72hours = "Within 72 hours";
+  static const String featureRequest = "Feature request";
+
+  static const String ticketStatus = "Ticket Status";
+
+  static const String open = "Open";
+  static const String newTicketAwaitingResponse = "New ticket, awaiting response";
+
+  static const String inProgress = "In Progress";
+  static const String adminWorking = "Admin is working on it";
+
+  static const String waiting = "Waiting";
+  static const String waitingYourResponse = "Waiting for your response";
+
+  static const String resolved = "Resolved";
+  static const String issueResolved = "Issue has been resolved";
+
+  static const String closed = "Closed";
+  static const String ticketClosed = "Ticket has been closed";
+
+  static const String tips = "Tips";
+  static const String provideInformation = "Provide clear, detailed information";
+  static const String includeScreenshot = "Include relevant screenshots";
+  static const String patientResponse = "Be patient for responses";
+  static const String followupNeeded = "Follow up if needed";
+
+  static const String categories = "Categories";
+  static const String subject = "Subject";
+  static const String subjectQuestion = "Subject related questions";
+
+  static const String exam = "Exam";
+  static const String examIssue = "Exam related issues";
+
+  static const String requestNewSubject = "Request New Subject";
+  static const String addSubjectPlatform = "Add new subject to platform";
+
+  static const String technical = "Technical";
+  static const String platformIssue = "Platform issues";
+
+  static const String general = "General";
+  static const String otherInquiries = "Other inquiries";
+
+  static const String priorityLevels = "Priority Levels";
+  static const String criticalAttention = "Critical issue, immediate attention";
+  static const String importantResponse = "Important issue, quick response";
+  static const String normalPriority = "Normal Priority";
+  static const String minorRush = "Minor issue, no rush";
 
 }

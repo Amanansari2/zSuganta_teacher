@@ -334,6 +334,41 @@ class AuthenticationRepo {
     }
   }
 
+  //-------------------------------->>>>>>>>>>>>>Ticket Section<<<<<<<<<<<<<<
+  Future<Map<String, dynamic>> getTicketOptions() async {
+    try{
+      final response = await getMethod.getRequest(
+          endpoint: ApiUrls.ticketOptionsUrl,
+          requireAuth:  true
+      );
+      return response;
+    }catch(e){
+      return {
+        'status' : 'error',
+        'code' : '500',
+        'message' : 'Exception during get Institute Options Urls : $e'
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> submitTicket(FormData formData) async {
+    try{
+      final response = await postMethod.postFormDataRequest(
+          endpoint: ApiUrls.submitTicketUrl,
+          formData: formData,
+           requireAuth:  true
+      );
+      return response;
+    }catch(e){
+      LoggerHelper.info("Exception during submit ticket : $e");
+      return {
+        'status' : 'error',
+        'code' : '500',
+        'message' : 'Exception during submit ticket : $e'
+      };
+    }
+  }
+
 }
 
 

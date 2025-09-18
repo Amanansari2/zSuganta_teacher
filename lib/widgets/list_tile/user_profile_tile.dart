@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:z_tutor_suganta/providers/authentication/get_user_profile_provider.dart';
 import 'package:z_tutor_suganta/utils/constants/image_strings.dart';
 import 'package:z_tutor_suganta/utils/helpers/logger_helper.dart';
 import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';

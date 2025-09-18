@@ -1,6 +1,5 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -58,9 +57,11 @@ class SignInProvider extends ChangeNotifier{
         if (userRole == "teacher") {
           await getUserProfileProvider.fetchTeacherProfile(context);
         }
-        if(userRole == 'institute'){
+        if(userRole == 'institute' || userRole == 'university'){
           await getUserProfileProvider.fetchInstituteProfile(context);
         }
+
+
 
         final localSavedToken = await LocalStorageService.getToken();
 

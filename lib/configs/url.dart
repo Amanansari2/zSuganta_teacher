@@ -32,5 +32,10 @@ class ApiUrls{
  static const String sessionUrl = "/auth/sessions";
  static const String deleteSessionUrl = "/auth/sessions/delete";
 
+//tickets
+ static const String ticketOptionsUrl = "/options/4";
+ static const String submitTicketUrl = "/support-tickets";
+
+
 
 }

@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/repository/authentication_repo.dart';
 import 'package:z_tutor_suganta/utils/helpers/logger_helper.dart';
 
 import '../../models/accounts/sessions_model.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../widgets/dialog/custom_dialog.dart';
-import '../authentication/get_user_profile_provider.dart';
+
 
 class SessionsProvider with ChangeNotifier{
 

@@ -99,9 +99,11 @@ class AccountScreen extends StatelessWidget {
                         if(userRole == 'university')
                         SettingMenuTile(
                           icon: FontAwesomeIcons.handsHelping,
-                          title: AppText.ngoInformation,
-                          subTitle: AppText.manageNgoProfile,
-                          onTap: (){},
+                          title: AppText.universityInformation,
+                          subTitle: AppText.manageUniversityProfile,
+                          onTap: (){
+                            context.pushNamed('instituteInformationScreen');
+                          },
                         ),
 
                         SettingMenuTile(

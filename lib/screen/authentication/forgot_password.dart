@@ -6,14 +6,12 @@ import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/forgot_password_provider.dart';
 import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/constants/sizes.dart';
-import 'package:z_tutor_suganta/widgets/custom_app_bar.dart';
 import 'package:z_tutor_suganta/widgets/texts/custom_text_form_field.dart';
 import 'package:z_tutor_suganta/widgets/custom_button.dart';
 
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../utils/theme/provider/theme_provider.dart';
-import '../../utils/theme/theme_switcher_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});

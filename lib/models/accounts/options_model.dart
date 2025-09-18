@@ -26,3 +26,18 @@ class SubjectOptions{
     );
   }
 }
+
+
+class TicketOptions{
+  final String id;
+  final String label;
+
+  TicketOptions({required this.id, required this.label});
+
+  factory TicketOptions.fromJson(Map<String, dynamic> json){
+    return TicketOptions(
+      id: json['id'],
+      label: json['label']
+    );
+  }
+}

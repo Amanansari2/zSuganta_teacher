@@ -126,7 +126,6 @@ class _SessionsScreenState extends State<SessionsScreen> with SingleTickerProvid
                 ),
               ),
 
-              AppThemeSwitcherButton(),
             ],
           ),
         );

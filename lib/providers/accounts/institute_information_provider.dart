@@ -134,25 +134,36 @@ FilterOption? selectedTotalTeacher;
 
 
    void _setOptionsFromData(Map<String, dynamic>data){
-     instituteType = (data['institute_type'] as List)
-         .map((e) => FilterOption.fromJson(e))
-         .toList();
+     List<FilterOption> parseOptions(List<dynamic>? list) {
+       if (list == null) return [];
+       return list.map((e) => FilterOption.fromJson(e)).toList();
+     }
 
-     instituteCategory = (data['institute_category'] as List)
-          .map((e) => FilterOption.fromJson(e))
-          .toList();
+     instituteType = parseOptions(data['institute_type']);
+     instituteCategory = parseOptions(data['institute_category']);
+     establishmentYear = parseOptions(data['establishment_year_range']);
+     totalStudent = parseOptions(data['total_students_range']);
+     totalTeacher = parseOptions(data['total_teachers_range']);
 
-     establishmentYear = (data['establishment_year_range'] as List)
-           .map((e) => FilterOption.fromJson(e))
-           .toList();
-
-     totalStudent = (data['total_students_range'] as List)
-           .map((e) => FilterOption.fromJson(e))
-           .toList() ;
-
-     totalTeacher = (data['total_teachers_range'] as List)
-           .map((e) => FilterOption.fromJson(e))
-           .toList();
+     // instituteType = (data['institute_type'] as List)
+     //     .map((e) => FilterOption.fromJson(e))
+     //     .toList();
+     //
+     // instituteCategory = (data['institute_category'] as List)
+     //      .map((e) => FilterOption.fromJson(e))
+     //      .toList();
+     //
+     // establishmentYear = (data['establishment_year_range'] as List)
+     //       .map((e) => FilterOption.fromJson(e))
+     //       .toList();
+     //
+     // totalStudent = (data['total_students_range'] as List)
+     //       .map((e) => FilterOption.fromJson(e))
+     //       .toList() ;
+     //
+     // totalTeacher = (data['total_teachers_range'] as List)
+     //       .map((e) => FilterOption.fromJson(e))
+     //       .toList();
    }
 
 

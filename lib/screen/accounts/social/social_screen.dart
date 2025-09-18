@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -168,8 +167,6 @@ class SocialScreen extends StatelessWidget {
 
                                   SizedBox(height: Sizes.defaultSpace),
                                   SizedBox(height: Sizes.defaultSpace),
-                                  SizedBox(height: Sizes.defaultSpace),
-                                  AppThemeSwitcherButton(),
                                   SizedBox(height: Sizes.defaultSpace),
                                 ],
                               )),

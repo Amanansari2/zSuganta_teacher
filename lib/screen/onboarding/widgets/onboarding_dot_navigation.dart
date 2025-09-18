@@ -6,7 +6,6 @@ import 'package:z_tutor_suganta/screen/onboarding/provider/onboarding_provider.d
 import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/constants/sizes.dart';
 import 'package:z_tutor_suganta/utils/device/device_utils.dart';
-import 'package:z_tutor_suganta/utils/helpers/helper_function.dart';
 
 import '../../../utils/theme/provider/theme_provider.dart';
 

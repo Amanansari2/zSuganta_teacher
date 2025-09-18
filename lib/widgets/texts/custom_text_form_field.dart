@@ -1,5 +1,4 @@
 import 'package:country_picker/country_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +22,9 @@ class AppTextFiled extends StatefulWidget {
   final String? countryCode;
   final String? flagEmoji;
   final void Function(Country)? onCountryChanged;
+
+  final int? maxLength;
+  final bool showCounter;
   const AppTextFiled({
     super.key,
     required this.label,
@@ -40,6 +42,8 @@ class AppTextFiled extends StatefulWidget {
     this.countryCode,
     this.flagEmoji,
     this.onCountryChanged,
+    this.maxLength,
+    this.showCounter = false
   });
 
   @override
@@ -76,6 +80,15 @@ class _AppTextFiledState extends State<AppTextFiled> {
       enableSuggestions: !widget.obscureText,
       minLines: widget.maxLines,
       maxLines: widget.obscureText ? 1 : widget.maxLines,
+      maxLength: widget.maxLength,
+      buildCounter: widget.showCounter
+             ? (context, {required currentLength, required maxLength, required isFocused}){
+        return Text(
+          "$currentLength / $maxLength",
+          style: TextStyle(fontSize: 12, color: Colors.grey),
+        );
+      }
+      : null,
       decoration: InputDecoration(
         label:  RichText(
           text: TextSpan(

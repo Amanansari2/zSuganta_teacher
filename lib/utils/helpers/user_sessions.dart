@@ -17,6 +17,7 @@ class UserSessionProvider extends ChangeNotifier {
   TeacherProfileModel? _teacherProfile;
   Map<String, dynamic>? _instituteOptions;
   InstituteProfileModel? _instituteProfile;
+  Map<String, dynamic>? _ticketOptions;
 
   UserModel? get currentUser => _currentUser;
   SocialModel? get currentSocial => _currentSocial;
@@ -25,6 +26,7 @@ class UserSessionProvider extends ChangeNotifier {
   TeacherProfileModel? get teacherProfile => _teacherProfile;
   Map<String, dynamic>? get instituteOptions => _instituteOptions;
   InstituteProfileModel? get instituteProfile => _instituteProfile;
+  Map<String, dynamic>? get ticketOptions => _ticketOptions;
 
   String get role => _currentUser?.role ?? 'user';
   bool get isLoggedIn => _currentUser != null;
@@ -77,12 +79,19 @@ class UserSessionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setTicketOptions(Map<String, dynamic>ticket){
+    _ticketOptions = ticketOptions;
+    LocalStorageService.saveTicketOptions(ticket);
+    notifyListeners();
+  }
+
   void logout() async {
     _currentUser = null;
     _currentSocial = null;
     _teacherOptions = null;
     _teacherSubjects = null;
     _instituteOptions = null;
+    _ticketOptions = null;
     await LocalStorageService.clearAuthDataRedirect();
     notifyListeners();
   }

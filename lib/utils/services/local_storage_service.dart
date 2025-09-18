@@ -27,6 +27,8 @@ class LocalStorageService{
   static const String _instituteOptionsKey = "institute_options";
   static const String _instituteOptionsTimestampKey = "institute_options_timestamp";
   static const String _instituteProfileKey = "institute_profile";
+  static const String _ticketOptionsKey = "ticket_options";
+  static const String _ticketOptionsTimestampKey = "ticket_options_timestamp";
 
 
 
@@ -213,6 +215,34 @@ static UserModel? getUser() {
   }
 
 
+//_________________________Ticket options
+///-->> save Ticket options
+  static Future<void> saveTicketOptions(Map<String, dynamic>ticketOptions) async{
+    await _prefs.setString(_ticketOptionsKey, jsonEncode(ticketOptions));
+    await _prefs.setString(_ticketOptionsTimestampKey, DateTime.now().toIso8601String());
+  }
+
+///-->> get Ticket options
+  static Map<String, dynamic>? getTicketOptions(){
+    final data = _prefs.getString(_ticketOptionsKey);
+    final timestampStr = _prefs.getString(_ticketOptionsTimestampKey);
+
+    if(data == null || timestampStr == null) return null;
+    final savedAt = DateTime.tryParse(timestampStr);
+    if(savedAt == null) return null;
+    final now = DateTime.now();
+    if(now.difference(savedAt).inDays >=3){
+      _prefs.remove(_ticketOptionsKey);
+      _prefs.remove(_ticketOptionsTimestampKey);
+      LoggerHelper.info("Ticket options cache expired after 3 days");
+      return null;
+
+    }
+
+    return jsonDecode(data);
+  }
+
+
 
 //_________________________Clear and Redirect
 static Future<void> clearAuthDataRedirect() async{
@@ -226,7 +256,9 @@ static Future<void> clearAuthDataRedirect() async{
     await _prefs.remove(_teacherProfileKey);
     await _prefs.remove(_instituteOptionsKey);
     await _prefs.remove(_instituteOptionsTimestampKey);
-    LoggerHelper.info("Data Removed successfully--> token, user, social links, teacher options, teacher subjects, teacher profile, institute options");
+    await _prefs.remove(_ticketOptionsKey);
+    await _prefs.remove(_ticketOptionsTimestampKey);
+    LoggerHelper.info("Data Removed successfully--> token, user, social links, teacher options, teacher subjects, teacher profile, institute options, ticket Options");
   SessionOverlay.showAndRedirect();
 }
 }

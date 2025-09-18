@@ -57,10 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ]
     ),
 
-          Positioned(
-            left: Sizes.defaultSpace,
-              top: Sizes.appBarHeight,
-              child: AppThemeSwitcherButton()),
+
 
 
           const OnBoardingSkip(),

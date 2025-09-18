@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/get_user_profile_provider.dart';
+import 'package:z_tutor_suganta/providers/support_screen/support_screen_provider.dart';
 import 'package:z_tutor_suganta/screen/home/navigations/navigation_provider.dart';
 import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
@@ -26,18 +27,28 @@ class _NavigationMenuState extends State<NavigationMenu> {
       final token = LocalStorageService.getToken();
       if(token != null && token.isNotEmpty){
         final profileProvider = context.read<GetUserProfileProvider>();
-        await profileProvider.fetchUserProfile(context);
-        await profileProvider.fetchSocialProfile(context);
-
+        final ticketProvider = context.read<SupportScreenProvider>();
+        final sessionProvider = context.read<UserSessionProvider>();
         final userRole = context.read<UserSessionProvider>().role?.toLowerCase();
+
+
+
+        await profileProvider.fetchUserProfile(context);
+         await profileProvider.fetchSocialProfile(context);
+        await ticketProvider.init(sessionProvider);
+
+
+
 
         if (userRole == "teacher") {
           await profileProvider.fetchTeacherProfile(context);
         }
 
-        if(userRole == 'institute'){
+        if(userRole == 'institute' ||userRole == 'university' ){
           await profileProvider.fetchInstituteProfile(context);
         }
+
+
       }
     });
 

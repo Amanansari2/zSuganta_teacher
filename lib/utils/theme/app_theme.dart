@@ -9,6 +9,7 @@ import 'custom_themes/chip_theme.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData.light().copyWith(
       useMaterial3: true,
+      scaffoldBackgroundColor: AppColors.white,
       colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),
     appBarTheme: MyAppBarTheme.lightAppBarTheme,
     textTheme: AppTextTheme.lightTextTheme,
@@ -18,6 +19,7 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData.dark().copyWith(
       useMaterial3: true,
+      scaffoldBackgroundColor: AppColors.black,
       colorScheme: ColorScheme.fromSeed(seedColor: AppColors.blue,),
     appBarTheme: MyAppBarTheme.darkAppBarTheme,
     textTheme: AppTextTheme.darkTextTheme,

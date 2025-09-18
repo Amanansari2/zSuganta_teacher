@@ -520,7 +520,6 @@ class TeachingInformationScreen extends StatelessWidget {
                                    ),
                                  ),
 
-                                 AppThemeSwitcherButton(),
 
 
                                ],
