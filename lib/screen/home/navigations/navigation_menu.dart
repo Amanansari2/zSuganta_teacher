@@ -9,6 +9,7 @@ import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 
+import '../../../providers/classes/classes_provider.dart';
 import '../../../utils/helpers/user_sessions.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -29,6 +30,9 @@ class _NavigationMenuState extends State<NavigationMenu> {
         final profileProvider = context.read<GetUserProfileProvider>();
         final ticketProvider = context.read<SupportScreenProvider>();
         final sessionProvider = context.read<UserSessionProvider>();
+        final classProvider = context.read<ClassesProvider>();
+        await classProvider.init(sessionProvider);
+        classProvider.fetchProfilePercentage(context);
         final userRole = context.read<UserSessionProvider>().role?.toLowerCase();
 
 

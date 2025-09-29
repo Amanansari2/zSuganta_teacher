@@ -35,7 +35,15 @@ class ApiUrls{
 //tickets
  static const String ticketOptionsUrl = "/options/4";
  static const String submitTicketUrl = "/support-tickets";
+ static const String getTicketUrl = "/support-tickets";
+ static const String getTicketDetailsUrl = "/support-tickets";
+ static const String replyTicketUrl = "/support-tickets";
+ static const String closeTicketUrl = "/support-tickets";
 
+//home
+ static const String profileCompletionUrl = "/dashboard/profile/completion";
+ static const String classOptionsUrl = "/options/5";
+ static const String createClassUrl = "/classes";
 
 
 }

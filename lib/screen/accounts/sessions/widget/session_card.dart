@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
+import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 import '../../../../models/accounts/sessions_model.dart';
 
 class SessionCard extends StatelessWidget {
@@ -17,18 +20,19 @@ class SessionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    // final theme = Theme.of(context);
+    final dark = context.watch<ThemeProvider>().isDarkMode;
     final isActive = session.isActive;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.cardColor,
+        color: dark ? AppColors.black : AppColors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: theme.brightness == Brightness.dark
+            color: dark
                 ? Colors.black26
                 : Colors.grey,
             blurRadius: 2,
@@ -46,7 +50,7 @@ class SessionCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   session.deviceName,
-                  style: theme.textTheme.titleMedium?.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),

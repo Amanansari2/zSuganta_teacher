@@ -12,6 +12,7 @@ import 'package:z_tutor_suganta/widgets/dialog/custom_dialog.dart';
 
 
 import '../../models/accounts/options_model.dart';
+import '../classes/classes_provider.dart';
 
 class InstituteInformationProvider extends ChangeNotifier{
 
@@ -145,25 +146,7 @@ FilterOption? selectedTotalTeacher;
      totalStudent = parseOptions(data['total_students_range']);
      totalTeacher = parseOptions(data['total_teachers_range']);
 
-     // instituteType = (data['institute_type'] as List)
-     //     .map((e) => FilterOption.fromJson(e))
-     //     .toList();
-     //
-     // instituteCategory = (data['institute_category'] as List)
-     //      .map((e) => FilterOption.fromJson(e))
-     //      .toList();
-     //
-     // establishmentYear = (data['establishment_year_range'] as List)
-     //       .map((e) => FilterOption.fromJson(e))
-     //       .toList();
-     //
-     // totalStudent = (data['total_students_range'] as List)
-     //       .map((e) => FilterOption.fromJson(e))
-     //       .toList() ;
-     //
-     // totalTeacher = (data['total_teachers_range'] as List)
-     //       .map((e) => FilterOption.fromJson(e))
-     //       .toList();
+
    }
 
 
@@ -194,7 +177,10 @@ FilterOption? selectedTotalTeacher;
              positiveButtonText:  AppText.ok,
            onPositivePressed: () async {
                final instituteProvider = Provider.of<GetUserProfileProvider>(context, listen: false);
+               final classProvider = context.read<ClassesProvider>();
                await instituteProvider.fetchInstituteProfile(context);
+             await  classProvider.fetchProfilePercentage(context);
+
 
                context.pop();
            },

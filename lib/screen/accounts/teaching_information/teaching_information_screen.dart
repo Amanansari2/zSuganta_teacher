@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/accounts/teaching_information_provider.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
-import 'package:z_tutor_suganta/utils/theme/theme_switcher_button.dart';
 import 'package:z_tutor_suganta/widgets/containers/primary_header_container.dart';
 import 'package:z_tutor_suganta/screen/accounts/teaching_information/widget/subject_selection_container.dart';
 

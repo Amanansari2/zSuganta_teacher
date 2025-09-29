@@ -5,8 +5,9 @@ import 'package:permission_handler/permission_handler.dart';
 
 class FilePickerRow extends StatefulWidget {
   final void Function(File? file)? onFileSelected;
+  final File? file;
 
-  const FilePickerRow({super.key, this.onFileSelected});
+  const FilePickerRow({super.key, this.onFileSelected, this.file});
 
   @override
   State<FilePickerRow> createState() => _FilePickerRowState();
@@ -15,6 +16,22 @@ class FilePickerRow extends StatefulWidget {
 class _FilePickerRowState extends State<FilePickerRow> {
   File? _selectedFile;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedFile = widget.file;
+  }
+
+  @override
+  void didUpdateWidget(covariant FilePickerRow oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.file != widget.file) {
+      setState(() {
+        _selectedFile = widget.file;
+      });
+    }
+  }
 
   Future<void> _pickFile(BuildContext context) async {
 

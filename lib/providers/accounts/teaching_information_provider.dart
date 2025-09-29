@@ -11,6 +11,7 @@ import '../../repository/authentication_repo.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../widgets/dialog/custom_dialog.dart';
 import '../authentication/get_user_profile_provider.dart';
+import '../classes/classes_provider.dart';
 
 class TeachingInformationProvider extends ChangeNotifier{
 
@@ -281,8 +282,9 @@ class TeachingInformationProvider extends ChangeNotifier{
             positiveButtonText: AppText.ok,
             onPositivePressed: () async{
                final teacherProvider = Provider.of<GetUserProfileProvider>(context, listen: false);
+               final classProvider = context.read<ClassesProvider>();
                await teacherProvider.fetchTeacherProfile(context);
-
+               await classProvider.fetchProfilePercentage(context);
               context.pop();
             },
             dismissible: false,

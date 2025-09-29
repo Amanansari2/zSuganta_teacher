@@ -7,6 +7,7 @@ import 'package:z_tutor_suganta/repository/authentication_repo.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../widgets/dialog/custom_dialog.dart';
 import '../authentication/get_user_profile_provider.dart';
+import '../classes/classes_provider.dart';
 
 class SocialLinkProvider extends ChangeNotifier{
 
@@ -53,7 +54,12 @@ class SocialLinkProvider extends ChangeNotifier{
             positiveButtonText: AppText.ok,
             onPositivePressed: () async{
               final socialProvider = Provider.of<GetUserProfileProvider>(context, listen: false);
+              final classProvider = context.read<ClassesProvider>();
+
               await socialProvider.fetchSocialProfile(context);
+
+             await classProvider.fetchProfilePercentage(context);
+
 
               context.pop();
             },

@@ -125,6 +125,15 @@ class AccountScreen extends StatelessWidget {
                         ),
 
                         SettingMenuTile(
+                          icon: FontAwesomeIcons.ticket,
+                          title: AppText.supportTickets,
+                          subTitle: AppText.manageTrackTickets,
+                          onTap: (){
+                            context.pushNamed('supportTicketListScreen');
+                          },
+                        ),
+
+                        SettingMenuTile(
                           icon: FontAwesomeIcons.userLock,
                           title: AppText.allSessions,
                           subTitle: AppText.seeDevicesLogged,

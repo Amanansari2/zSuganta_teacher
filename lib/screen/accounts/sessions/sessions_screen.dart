@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/screen/accounts/sessions/widget/session_card.dart';
-import 'package:z_tutor_suganta/utils/theme/theme_switcher_button.dart';
 
 import '../../../models/accounts/sessions_model.dart';
 import '../../../providers/accounts/sessions_provider.dart';

@@ -183,6 +183,9 @@ class UpdateProfileScreen extends StatelessWidget {
                             AppDatePickerField(
                               label: "Date of Birth",
                               hint: "Select your birth date",
+                              initialDate: DateTime(2000) ,
+                              firstDate: DateTime(1950),
+                              lastDate: DateTime.now(),
                               controller: provider.dobController,
                               onChanged: (value) {},
                             ),

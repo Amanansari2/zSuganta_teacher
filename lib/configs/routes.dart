@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:z_tutor_suganta/models/accounts/tickets/ticket_details_model.dart';
 import 'package:z_tutor_suganta/providers/authentication/forgot_password_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signin_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signup_provider.dart';
@@ -9,6 +10,8 @@ import 'package:z_tutor_suganta/screen/accounts/institute_information/institute_
 import 'package:z_tutor_suganta/screen/accounts/password/reset_password.dart';
 import 'package:z_tutor_suganta/screen/accounts/profile/update_profile.dart';
 import 'package:z_tutor_suganta/screen/accounts/sessions/sessions_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/support_ticket/support_ticket_list.dart';
+import 'package:z_tutor_suganta/screen/accounts/support_ticket/ticket_detail_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/teaching_information/teaching_information_screen.dart';
 import 'package:z_tutor_suganta/screen/authentication/resend_email.dart';
 import 'package:z_tutor_suganta/screen/authentication/signin.dart';
@@ -138,6 +141,23 @@ class AppRouter{
             path: '/resetPasswordScreen',
             builder: (context, state) => ResetPasswordScreen(),
           ),
+
+          GoRoute(
+            name: 'supportTicketListScreen',
+            path: '/supportTicketListScreen',
+            builder: (context, state) => SupportTicketListScreen(),
+          ),
+
+
+          GoRoute(
+              name: 'ticketDetailScreen',
+              path: '/ticketDetailScreen/:ticketId',
+              builder: (context, state) {
+                final ticketId = int.parse(state.pathParameters['ticketId']!);
+                return TicketDetailScreen(ticketId: ticketId);
+              }
+          ),
+
 
           GoRoute(
             name: 'sessionsScreen',

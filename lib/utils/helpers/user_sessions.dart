@@ -18,6 +18,7 @@ class UserSessionProvider extends ChangeNotifier {
   Map<String, dynamic>? _instituteOptions;
   InstituteProfileModel? _instituteProfile;
   Map<String, dynamic>? _ticketOptions;
+  Map<String, dynamic>? _classOptions;
 
   UserModel? get currentUser => _currentUser;
   SocialModel? get currentSocial => _currentSocial;
@@ -27,6 +28,7 @@ class UserSessionProvider extends ChangeNotifier {
   Map<String, dynamic>? get instituteOptions => _instituteOptions;
   InstituteProfileModel? get instituteProfile => _instituteProfile;
   Map<String, dynamic>? get ticketOptions => _ticketOptions;
+  Map<String, dynamic>? get classOptions => _classOptions;
 
   String get role => _currentUser?.role ?? 'user';
   bool get isLoggedIn => _currentUser != null;
@@ -80,8 +82,14 @@ class UserSessionProvider extends ChangeNotifier {
   }
 
   void setTicketOptions(Map<String, dynamic>ticket){
-    _ticketOptions = ticketOptions;
+    _ticketOptions = ticket;
     LocalStorageService.saveTicketOptions(ticket);
+    notifyListeners();
+  }
+
+  void setClassOptions(Map<String, dynamic> options) {
+    _classOptions = options;
+    LocalStorageService.saveClassOptions(options);
     notifyListeners();
   }
 
@@ -92,6 +100,7 @@ class UserSessionProvider extends ChangeNotifier {
     _teacherSubjects = null;
     _instituteOptions = null;
     _ticketOptions = null;
+    _classOptions = null;
     await LocalStorageService.clearAuthDataRedirect();
     notifyListeners();
   }

@@ -11,7 +11,6 @@ import '../../../utils/constants/app_colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
 import '../../../utils/theme/provider/theme_provider.dart';
-import '../../../utils/theme/theme_switcher_button.dart';
 import '../../../widgets/custom_app_bar.dart';
 import '../../../widgets/texts/custom_text_form_field.dart';
 

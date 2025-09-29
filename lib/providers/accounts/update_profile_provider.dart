@@ -13,6 +13,7 @@ import 'package:z_tutor_suganta/utils/helpers/helper_function.dart';
 import 'package:z_tutor_suganta/widgets/dialog/custom_dialog.dart';
 
 import '../authentication/get_user_profile_provider.dart';
+import '../classes/classes_provider.dart';
 
 class UpdateProfileProvider extends ChangeNotifier{
 
@@ -159,7 +160,9 @@ class UpdateProfileProvider extends ChangeNotifier{
             positiveButtonText: AppText.ok,
           onPositivePressed: () async{
               final userProvider = Provider.of<GetUserProfileProvider>(context, listen: false);
+              final classProvider = context.read<ClassesProvider>();
             await userProvider.fetchUserProfile(context);
+            await classProvider.fetchProfilePercentage(context);
 
               context.pop();
           },

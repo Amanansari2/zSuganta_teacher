@@ -119,12 +119,6 @@ class SessionsProvider with ChangeNotifier{
     }
   }
 
-  void resetSessions() {
-    _allSessions = [];
-    _currentPage = 1;
-    _lastPage = 1;
-    notifyListeners();
-  }
 
 
 }

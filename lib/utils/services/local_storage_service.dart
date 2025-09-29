@@ -29,6 +29,8 @@ class LocalStorageService{
   static const String _instituteProfileKey = "institute_profile";
   static const String _ticketOptionsKey = "ticket_options";
   static const String _ticketOptionsTimestampKey = "ticket_options_timestamp";
+  static const String _classOptionsKey = "class_options";
+  static const String _classOptionsTimestampKey = "class_options_timestamp";
 
 
 
@@ -110,6 +112,8 @@ static UserModel? getUser() {
     await _prefs.setString(_teacherOptionsTimestampKey, DateTime.now().toIso8601String());
   }
 
+
+
 ///-->> get teacher options
   static Map<String, dynamic>? getTeacherOptions() {
     final data = _prefs.getString(_teacherOptionsKey);
@@ -130,6 +134,8 @@ static UserModel? getUser() {
 
     return jsonDecode(data);
   }
+
+
 
 
 //_________________________Teacher subjects
@@ -242,6 +248,33 @@ static UserModel? getUser() {
     return jsonDecode(data);
   }
 
+//_________________________Class options
+///-->> save Class options
+  static Future<void> saveClassOptions(Map<String, dynamic> options) async {
+    await _prefs.setString(_classOptionsKey, jsonEncode(options));
+    await _prefs.setString(_classOptionsTimestampKey, DateTime.now().toIso8601String());
+  }
+
+///-->> get Class options
+  static Map<String, dynamic>? getClassOptions(){
+    final data = _prefs.getString(_classOptionsKey);
+    final timestampStr = _prefs.getString(_classOptionsTimestampKey);
+
+    if(data == null || timestampStr == null) return null;
+
+    final savedAt = DateTime.tryParse(timestampStr);
+    if(savedAt == null) return null;
+
+    final now = DateTime.now();
+    if(now.difference(savedAt).inDays >= 3){
+      _prefs.remove(_classOptionsKey);
+      _prefs.remove(_classOptionsTimestampKey);
+      LoggerHelper.info("Class options cache expired after 3 days");
+      return null;
+    }
+
+    return jsonDecode(data);
+  }
 
 
 //_________________________Clear and Redirect
@@ -258,7 +291,9 @@ static Future<void> clearAuthDataRedirect() async{
     await _prefs.remove(_instituteOptionsTimestampKey);
     await _prefs.remove(_ticketOptionsKey);
     await _prefs.remove(_ticketOptionsTimestampKey);
-    LoggerHelper.info("Data Removed successfully--> token, user, social links, teacher options, teacher subjects, teacher profile, institute options, ticket Options");
+    await _prefs.remove(_classOptionsKey);
+    await _prefs.remove(_classOptionsTimestampKey);
+    LoggerHelper.info("Data Removed successfully--> token, user, social links, teacher options, teacher subjects, teacher profile, institute options, ticket Options, class options");
   SessionOverlay.showAndRedirect();
 }
 }

@@ -220,6 +220,7 @@ class SupportScreen extends StatelessWidget {
                           const SizedBox(height: Sizes.defaultSpace),
 
                           AppTextFiled(
+
                             maxLines: 12,
                             maxLength: 5000,
                             showCounter: true,
@@ -231,7 +232,7 @@ class SupportScreen extends StatelessWidget {
                               if (value == null || value.trim().isEmpty) {
                                 return "message is required";
                               }
-                              if (value.trim().length < 20) {
+                              if (value.trim().length < 10) {
                                 return "Minimum 10 characters are required";
                               }
                               return null;
@@ -241,6 +242,7 @@ class SupportScreen extends StatelessWidget {
                           const SizedBox(height: Sizes.defaultSpace),
 
                           FilePickerRow(
+                            file: provider.uploadedFile,
                             onFileSelected: (file) {
                               provider.uploadedFile = file;
                             },
@@ -251,10 +253,10 @@ class SupportScreen extends StatelessWidget {
 
                           Center(
                             child: CustomButton(
-                              text: AppText.updateProfile,
+                              text: AppText.submitTicket,
                               onPressed: () {
                                 if (!provider.isLoading) {
-                                  // provider.updateProfile(context);
+                                   provider.submitTicket(context);
                                 }
                               },
                               color: dark ? AppColors.blue : AppColors.orange,

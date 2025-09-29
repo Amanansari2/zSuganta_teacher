@@ -109,7 +109,6 @@ class InstituteInformationScreen extends StatelessWidget {
                           const SizedBox(height: Sizes.defaultSpace),
 
                           AppTextFiled(
-                            keyboardType: TextInputType.phone,
                             controller: provider.principalNameController,
                             label: AppText.principalDirectorName,
                             hint: AppText.enterPrincipalDirectorName,
@@ -120,6 +119,7 @@ class InstituteInformationScreen extends StatelessWidget {
                           const SizedBox(height: Sizes.defaultSpace),
 
                           AppTextFiled(
+                            keyboardType: TextInputType.phone,
                             controller: provider.principalPhoneController,
                             label: AppText.principalPhone,
                             hint: AppText.enterPhone,

@@ -10,7 +10,7 @@ class AppText{
   static const String getStartedNow = "Get Started Now";
   static const String createYourAccount = "Let's Create your account, find the perfect education";
 
-  static const String welcomeBack = 'Welcome back';
+  static const String welcomeBack = 'Welcome back,';
   static const String signIntoYourAccount = 'Sign in to your Suganta Account';
 
   static const String firstName = "First Name";
@@ -78,6 +78,9 @@ class AppText{
 
   static const String or = "or";
   static const String ok = "Ok";
+  static const String viewTicket = "View Ticket";
+  static const String submitTicket = "Submit Ticket";
+  static const String viewTicketDetails = "View Ticket Details";
   static const String retry = "Retry";
   static const String success = "Success";
   static const String error = "Error";
@@ -281,5 +284,79 @@ class AppText{
   static const String importantResponse = "Important issue, quick response";
   static const String normalPriority = "Normal Priority";
   static const String minorRush = "Minor issue, no rush";
+
+  static const String supportTickets = "Support Tickets";
+  static const String manageTrackTickets = "You can manage and track your support requests";
+
+  static const String profileCompletion = "Profile Completion: ";
+  static const String incompleteFields = "Incomplete Fields";
+  static const String allFieldsCompleted = "All Fields Completed!";
+
+  static const String ticket = "Ticket";
+  static const String tickets = "Tickets";
+  static const String status = "Status";
+  static const String assignedTo = "Assigned To";
+  static const String updatedAt = "Updated At";
+  static const String createdAt = "Created At";
+  static const String all = "All";
+  static const String noTicketFound = "No Tickets Found";
+  static const String closeTicket = "Close Ticket";
+  static const String typeYourReply = "Type your reply...";
+
+
+  static const String viewTickets = "View Tickets";
+  static const String viewSessions = "View Sessions";
+  static const String sessions = "Sessions";
+  static const String classes = "Classes";
+  static const String manageClasses = "You can manage all your classes in one place";
+  static const String viewClasses = "View Classes";
+  static const String teachers = "Teachers";
+  static const String manageTeachers = "You can manage all your teachers in one place";
+  static const String viewTeacher = "View Teachers";
+  static const String branches = "Branches";
+  static const String manageBranches = "You can manage all your Branches in one place";
+  static const String viewBranches = "View Branches";
+  static const String classesGuideLines = "Classes GuideLines";
+  static const String minimumDuration = "Minimum duration: 15 minutes";
+  static const String maximumDuration = "Maximum duration: 8 hours (480 minutes)";
+  static const String sessionScheduleDates = "Sessions can be scheduled for today or future dates";
+  static const String sameDaySession = "Same-day sessions require at least 30 minutes advance notice";
+  static const String maximum50 = "Maximum 50 students per session";
+  static const String priceCanBe = "Price can be set to 0 for free sessions";
+  static const String createNewClasses = "Create New Class";
+
+  static const String classTitle = "Class Title";
+  static const String enterClassTitle = "Enter class title";
+  static const String enterClassDescription = "Enter class description....";
+  static const String duration = "Duration (minutes)";
+  static const String enterDuration = "Enter class duration in minutes";
+  static const String maxStudents = "Max Students";
+  static const String enterMaxStudents = "Enter maximum students";
+  static const String price = "Price (₹)";
+  static const String enterPrice = "Enter price";
+  static const String createClass = "Create Class";
+  static const String selectTeacher = "Select Teacher";
+  static const String selectSubject = "Select Subject";
+  static const String selectExam = "Select Exam";
+  static const String examCategory = "Exam Category";
+  static const String classType = "Class Type";
+  static const String selectClassType = "Select Class Type";
+  static const String tipsForSuccess = "Tips for success";
+  static const String chooseClearTitle = "Choose a clear, descriptive title";
+  static const String provideDetailTopic = "Provide detailed description of topics";
+  static const String setDurationLimit = "Set realistic duration and student limits";
+  static const String ensureScheduleAccurate = "Ensure your schedule is accurate";
+  static const String prepareMaterialAdvance = "Prepare materials in advance";
+  static const String importantNotes = "Important Notes";
+  static const String classesCanceledHours = "Classes cannot be cancelled within 24 hours";
+  static const String studentNotified = "Students will be notified automatically";
+  static const String paymentProcessCompletion = "Payment will be processed after completion";
+  static const String scheduleUpdateRegularly = "Keep your schedule updated regularly";
+  static const String locationMeetingLink = "Location / Meeting Link";
+  static const String physicalMeetingLink = "Physical address or online Meeting Link";
+
+
+
+
 
 }

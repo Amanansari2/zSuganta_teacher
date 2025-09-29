@@ -34,5 +34,14 @@ class HelperFunction {
       return date.toString();
     }
   }
-
+  static bool parseBool(dynamic value) {
+    if (value is bool) return value;
+    if (value is String) {
+      return value.toLowerCase() == 'true' || value == '1';
+    }
+    if (value is num) {
+      return value == 1;
+    }
+    return false;
+  }
 }

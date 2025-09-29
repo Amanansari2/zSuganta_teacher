@@ -369,6 +369,127 @@ class AuthenticationRepo {
     }
   }
 
+  Future<Map<String, dynamic>> getTickets({int page = 1}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getTicketUrl}?page=$page",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> getTicketDetails({required int ticketId}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getTicketDetailsUrl}/$ticketId",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+
+  Future<Map<String, dynamic>>  replyTicket(FormData formData, {required int ticketId}) async {
+    try {
+      final response = await postMethod.postFormDataRequest(
+          endpoint: "${ApiUrls.replyTicketUrl}/$ticketId/replies",
+          formData: formData,
+      requireAuth: true
+      );
+      return response ;
+    } catch(e){
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>>  closeTicket({required int ticketId}) async {
+    try{
+      final response = await postMethod.postRequest(
+          endpoint: "${ApiUrls.closeTicketUrl}/$ticketId/close",
+          data: {},
+          requireAuth: true
+      );
+      return response;
+    } catch(e){
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+
+  //-------------------------------->>>>>>>>>>>>>Home Section<<<<<<<<<<<<<<
+
+
+  Future<Map<String, dynamic>> getProfileCompletePercentage() async{
+    try{
+      final response = await getMethod.getRequest(
+          endpoint: ApiUrls.profileCompletionUrl,
+      requireAuth: true
+      );
+      return response;
+    }catch(e){
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> getClassOptions() async{
+    try{
+      final response = await getMethod.getRequest(
+          endpoint: ApiUrls.classOptionsUrl,
+          requireAuth: true
+      );
+      return response;
+    }catch(e){
+      return{
+        'status' : 'error',
+        'code' : '500',
+        'message' : 'Exception during get Social Urls : $e'
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> createClass(Map<String, dynamic> data) async{
+    try{
+      final response = await postMethod.postRequest(
+          endpoint: ApiUrls.createClassUrl,
+          requireAuth: true,
+          data: data
+      );
+      return response;
+    }catch(e){
+      return{
+        'status' : 'error',
+        'code' : '500',
+        'message' : 'Exception during create Classes : $e'
+      };
+    }
+  }
+
+
 }
 
 

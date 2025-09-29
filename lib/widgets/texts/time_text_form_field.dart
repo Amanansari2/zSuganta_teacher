@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../utils/constants/app_colors.dart';
 import '../../utils/theme/provider/theme_provider.dart';
 
-class AppDatePickerField extends StatefulWidget {
+class AppTimePickerField extends StatefulWidget {
   final String label;
   final String? hint;
   final TextEditingController? controller;
@@ -12,11 +12,8 @@ class AppDatePickerField extends StatefulWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final bool isRequired;
-  final DateTime initialDate;
-  final DateTime firstDate;
-  final DateTime lastDate;
 
-  const AppDatePickerField({
+  const AppTimePickerField({
     super.key,
     required this.label,
     this.hint,
@@ -25,50 +22,43 @@ class AppDatePickerField extends StatefulWidget {
     this.onChanged,
     this.onFieldSubmitted,
     this.isRequired = false,
-    required this.initialDate,
-    required this.firstDate,
-    required this.lastDate
   });
 
   @override
-  State<AppDatePickerField> createState() => _AppDatePickerFieldState();
+  State<AppTimePickerField> createState() => _AppTimePickerFieldState();
 }
 
-class _AppDatePickerFieldState extends State<AppDatePickerField> {
-  Future<void> _pickDate(BuildContext context, bool dark) async {
-   final DateTime initialDate = widget.initialDate;
-   final DateTime firstDate = widget.firstDate;
-    final DateTime lastDate = widget.lastDate;
-    final DateTime? pickedDate = await showDatePicker(
+class _AppTimePickerFieldState extends State<AppTimePickerField> {
+  Future<void> _pickTime(BuildContext context, bool dark) async {
+    final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
-      initialDate: initialDate,
-      firstDate: firstDate,
-      lastDate: lastDate,
+      initialTime: TimeOfDay.now(),
+      initialEntryMode: TimePickerEntryMode.input,
       builder: (context, child) {
         final scheme = dark
-            ?  ColorScheme.dark(
+            ? const ColorScheme.dark(
           primary: AppColors.blue,
           onPrimary: Colors.white,
           surface: Color(0xFF121212),
           onSurface: Colors.white,
         )
-            :  ColorScheme.light(
+            : const ColorScheme.light(
           primary: AppColors.orange,
           onPrimary: Colors.white,
           surface: Colors.white,
           onSurface: Colors.black,
         );
         return Theme(
-          data:  Theme.of(context).copyWith(colorScheme: scheme),
+          data: Theme.of(context).copyWith(colorScheme: scheme),
           child: child!,
         );
       },
     );
 
-    if (pickedDate != null && widget.controller != null) {
-      widget.controller!.text =
-      "${pickedDate.day.toString().padLeft(2, '0')}-${pickedDate.month.toString().padLeft(2, '0')}-${pickedDate.year}";
-      widget.onChanged?.call(widget.controller!.text);
+    if (pickedTime != null && widget.controller != null) {
+      final formattedTime = pickedTime.format(context); // Example: 10:30 AM
+      widget.controller!.text = formattedTime;
+      widget.onChanged?.call(formattedTime);
     }
   }
 
@@ -79,7 +69,7 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
-        _pickDate(context, dark);
+        _pickTime(context, dark);
       },
       child: AbsorbPointer(
         child: TextFormField(
@@ -97,8 +87,8 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
                   color: Theme.of(context).textTheme.bodyLarge?.color,
                 ),
                 children: widget.isRequired
-                    ? [
-                  const TextSpan(
+                    ? const [
+                  TextSpan(
                     text: ' *',
                     style: TextStyle(
                       color: Colors.red,
@@ -110,7 +100,7 @@ class _AppDatePickerFieldState extends State<AppDatePickerField> {
               ),
             ),
             hintText: widget.hint,
-            suffixIcon: const Icon(FontAwesomeIcons.calendarCheck, size: 18),
+            suffixIcon: const Icon(FontAwesomeIcons.clock, size: 18),
           ),
         ),
       ),

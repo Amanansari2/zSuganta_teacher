@@ -1,10 +1,17 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/models/accounts/options_model.dart';
 import 'package:z_tutor_suganta/repository/authentication_repo.dart';
 import 'package:z_tutor_suganta/utils/helpers/logger_helper.dart';
 import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';
+
+import '../../utils/constants/text_strings.dart';
+import '../../widgets/dialog/custom_dialog.dart';
 
 class SupportScreenProvider extends ChangeNotifier{
 
@@ -82,5 +89,94 @@ class SupportScreenProvider extends ChangeNotifier{
     priorities = (data['priorities'] as List)
         .map((e) => TicketOptions.fromJson(e))
         .toList();
+  }
+
+  Future<void>  submitTicket(BuildContext context) async {
+    if(!formKey.currentState!.validate()) return;
+
+    _isLoading = true;
+    notifyListeners();
+    try{
+      final formData = FormData.fromMap({
+        "priority" : selectedPriorities?.id,
+        "category": selectedCategory?.id,
+        "message": messageController.text.trim(),
+        if(uploadedFile != null)
+        "attachment": await MultipartFile.fromFile(
+          uploadedFile!.path,
+        )
+      });
+
+      final response = await authenticationRepo.submitTicket(formData);
+
+      if(response['success'] == true){
+        CustomDialog.show(
+            context,
+            title: AppText.success,
+            message: response['message'],
+            positiveButtonText: AppText.ok,
+            onPositivePressed: (){
+             resetForm();
+            },
+            negativeButtonText:AppText.viewTicket ,
+            onNegativePressed: (){
+              resetForm();
+              context.pushNamed('supportTicketListScreen');
+
+            },
+            backButtonBlock: true,
+            dismissible: false,
+            icon: FontAwesomeIcons.checkCircle
+        );
+      }else {
+        String backendMessage = response['message'] ?? "Something went wrong";
+        if(response['raw']?['errors'] != null && response['raw']['errors'] is Map){
+          final errors = response['raw']['errors'] as Map<String, dynamic>;
+          if(errors.isNotEmpty){
+            final firstFiled = errors.keys.first;
+            final firstErrorList = errors[firstFiled];
+            if(firstErrorList is List && firstErrorList.isNotEmpty){
+              backendMessage = firstErrorList.first.toString();
+            }
+          }
+        }
+        CustomDialog.show(
+          context,
+          title: AppText.error,
+          message: backendMessage,
+          positiveButtonText: AppText.retry,
+          backButtonBlock:true,
+          onPositivePressed: (){},
+          icon: FontAwesomeIcons.triangleExclamation,
+        );
+      }
+    }catch(e){
+      CustomDialog.show(
+        context,
+        title: AppText.error,
+        message: e.toString(),
+        positiveButtonText: AppText.retry,
+        onPositivePressed: (){},
+        icon: FontAwesomeIcons.triangleExclamation,
+      );
+    }finally{
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  void resetForm() {
+    messageController.clear();
+    uploadedFile = null;
+    selectedCategory = null;
+    selectedPriorities = null;
+    formKey.currentState?.reset();
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+     messageController.dispose();
+    super.dispose();
   }
 }
