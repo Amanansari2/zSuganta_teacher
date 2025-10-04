@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -36,18 +37,19 @@ class _FilePickerRowState extends State<FilePickerRow> {
   Future<void> _pickFile(BuildContext context) async {
 
     try {
-      PermissionStatus status;
+      PermissionStatus permissionStatus = PermissionStatus.denied;
 
       if (Platform.isAndroid) {
-        if (await _isAndroid13OrAbove()) {
-          status = await Permission.photos.request();
+        final androidInfo = await DeviceInfoPlugin().androidInfo;
+        if (androidInfo.version.sdkInt <= 32) {
+          permissionStatus = await Permission.storage.request();
         } else {
-          status = await Permission.storage.request();
+          permissionStatus = await Permission.photos.request();
         }
 
-        if (status.isDenied) {
+        if (permissionStatus.isDenied) {
           return;
-        } else if (status.isPermanentlyDenied) {
+        } else if (permissionStatus.isPermanentlyDenied) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text(

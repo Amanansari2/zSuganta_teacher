@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/models/accounts/tickets/ticket_details_model.dart';
+import 'package:z_tutor_suganta/models/classes/class_detailed_model.dart';
 import 'package:z_tutor_suganta/providers/authentication/forgot_password_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signin_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signup_provider.dart';
+import 'package:z_tutor_suganta/screen/accounts/classes/class_detailed_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/classes/edit_class_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/email_mobile/email_mobile_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/institute_information/institute_information_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/password/reset_password.dart';
@@ -24,6 +27,7 @@ import 'package:z_tutor_suganta/screen/support/support_screen.dart';
 import 'package:z_tutor_suganta/utils/services/local_storage_service.dart';
 
 import '../screen/accounts/account_screen.dart';
+import '../screen/accounts/classes/class_list_screen.dart';
 import '../screen/accounts/social/social_screen.dart';
 import '../screen/authentication/forgot_password.dart';
 
@@ -148,7 +152,6 @@ class AppRouter{
             builder: (context, state) => SupportTicketListScreen(),
           ),
 
-
           GoRoute(
               name: 'ticketDetailScreen',
               path: '/ticketDetailScreen/:ticketId',
@@ -156,6 +159,31 @@ class AppRouter{
                 final ticketId = int.parse(state.pathParameters['ticketId']!);
                 return TicketDetailScreen(ticketId: ticketId);
               }
+          ),
+
+          GoRoute(
+            name: 'classListScreen',
+            path: '/classListScreen',
+            builder: (context, state) => ClassListScreen(),
+          ),
+
+          GoRoute(
+              name: 'classDetailScreen',
+              path: '/classDetailScreen/:classId',
+              builder: (context, state) {
+                final classId = int.parse(state.pathParameters['classId']!);
+                return ClassDetailScreen(classId: classId);
+              }
+          ),
+
+          GoRoute(
+              name: 'editClassScreen',
+              path: '/editClassScreen',
+              builder: (context, state) {
+                final classDetails = state.extra as ClassDetailedModel;
+                return EditClassScreen(classDetails: classDetails,);
+              }
+
           ),
 
 

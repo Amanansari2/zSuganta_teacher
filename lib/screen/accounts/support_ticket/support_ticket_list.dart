@@ -120,33 +120,29 @@ class _SupportTicketListScreenState extends State<SupportTicketListScreen> with 
                       labelColor: AppColors.white,
                       unselectedLabelColor: AppColors.white,
                       indicatorSize: TabBarIndicatorSize.tab,
-                      tabs: const [
+                      tabs:  [
                         Tab( child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(AppText.all, textAlign: TextAlign.center),
-                            Text(AppText.tickets, textAlign: TextAlign.center),
+                            Text(AppText.all, style: Theme.of(context).textTheme.labelSmall,textAlign: TextAlign.center),
                           ],
                         ),),
                         Tab(child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(AppText.open, textAlign: TextAlign.center),
-                            Text(AppText.tickets, textAlign: TextAlign.center),
+                            Text(AppText.open, style: Theme.of(context).textTheme.labelSmall,textAlign: TextAlign.center),
                           ],
                         ),),
                         Tab(child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(AppText.resolved, textAlign: TextAlign.center),
-                            Text(AppText.tickets, textAlign: TextAlign.center),
+                            Text(AppText.resolved, style: Theme.of(context).textTheme.labelSmall,textAlign: TextAlign.center),
                           ],
                         ),),
                         Tab(child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(AppText.urgent, textAlign: TextAlign.center),
-                            Text(AppText.tickets, textAlign: TextAlign.center),
+                            Text(AppText.urgent, style: Theme.of(context).textTheme.labelSmall,textAlign: TextAlign.center),
                           ],
                         ),),
                       ],),

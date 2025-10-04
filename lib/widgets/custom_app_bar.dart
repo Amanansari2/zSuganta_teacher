@@ -5,6 +5,7 @@ import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/device/device_utils.dart';
 
 import '../utils/constants/sizes.dart';
+import '../utils/theme/theme_switcher_button.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   
@@ -14,7 +15,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
   final bool centerTitle;
-  
+
   const MyAppBar({
     super.key,
     this.title,
@@ -22,11 +23,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon,
     this.actions,
     this.leadingOnPressed,
-    this.centerTitle = false
+    this.centerTitle = false,
+
   });
 
   @override
   Widget build(BuildContext context) {
+    final combinedActions = <Widget>[
+      if (actions != null) ...actions!,
+      const ThemeToggleButton(),
+    ];
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: Sizes.xs),
     child: AppBar(
@@ -41,7 +47,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon))
           : null,
       title: title,
-      actions: actions,
+      actions: combinedActions,
       centerTitle: centerTitle,
     ),
     );

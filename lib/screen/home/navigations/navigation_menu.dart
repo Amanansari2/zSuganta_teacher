@@ -64,20 +64,22 @@ class _NavigationMenuState extends State<NavigationMenu> {
     final navigationProvider = context.watch<NavigationProvider>();
     return Scaffold(
       body: navigationProvider.currentScreen,
-      bottomNavigationBar: CurvedNavigationBar(
-          items: <Widget>[
-            Icon(FontAwesomeIcons.solidClipboard, size: 30, color: AppColors.white,),
-            Icon(FontAwesomeIcons.headset, size: 30,color: AppColors.white,),
-            Icon(FontAwesomeIcons.solidCircleUser, size: 30,color: AppColors.white,),
-          ],
-        onTap: (index){
-            navigationProvider.updateIndex(index);
-        },
-        height: 70,
-        backgroundColor: Colors.transparent,
-        color: dark ? AppColors.blue : AppColors.orange,
-        buttonBackgroundColor: dark? AppColors.blue : AppColors.orange,
-
+      bottomNavigationBar: SafeArea(
+        child: CurvedNavigationBar(
+            items: <Widget>[
+              Icon(FontAwesomeIcons.solidClipboard, size: 30, color: AppColors.white,),
+              Icon(FontAwesomeIcons.headset, size: 30,color: AppColors.white,),
+              Icon(FontAwesomeIcons.solidCircleUser, size: 30,color: AppColors.white,),
+            ],
+          onTap: (index){
+              navigationProvider.updateIndex(index);
+          },
+          height: 70,
+          backgroundColor: Colors.transparent,
+          color: dark ? AppColors.blue : AppColors.orange,
+          buttonBackgroundColor: dark? AppColors.blue : AppColors.orange,
+        
+        ),
       ) ,
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +54,7 @@ class ThemeToggleButton extends StatelessWidget {
           final newMode = isDark ? ThemeMode.light : ThemeMode.dark;
           themeProvider.setTheme(newMode);
         },
-        icon:Icon( isDark ? FontAwesomeIcons.solidMoon: FontAwesomeIcons.solidSun,)
+        icon:Icon( isDark ? FontAwesomeIcons.solidMoon: FontAwesomeIcons.solidSun, color: AppColors.white,)
     );
   }
 }

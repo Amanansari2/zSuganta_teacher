@@ -137,6 +137,7 @@ class TicketDetailsProvider extends ChangeNotifier{
             onPositivePressed: () async{
               await fetchTicketDetails(context, ticketId: ticketId);
             },
+            backButtonBlock: true,
             dismissible: true,
             icon: FontAwesomeIcons.checkCircle
         );

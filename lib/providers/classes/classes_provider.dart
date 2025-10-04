@@ -59,14 +59,14 @@ List<FilterOption> teachers = [];
 List<FilterOption> subjects = [];
 List<FilterOption> exam = [];
 List<FilterOption> examCategories = [];
-List<FilterOption> type = [];
+List<TicketOptions> type = [];
 
 // ---------- SELECTED VALUES ----------
  FilterOption? selectedTeacher;
  FilterOption? selectedSubject;
  FilterOption? selectedExam;
  FilterOption? selectedExamCategory;
- FilterOption? selectedType;
+ TicketOptions? selectedType;
 
 // ---------- SETTER METHODS ----------
 
@@ -90,7 +90,7 @@ void setTeacher(FilterOption? option){
     notifyListeners();
   }
 
-  void setType(FilterOption? option){
+  void setType(TicketOptions? option){
   selectedType = option;
   notifyListeners();
   }
@@ -140,7 +140,7 @@ void setTeacher(FilterOption? option){
           .toList();
 
       type = (data['type'] as List)
-          .map((e) => FilterOption.fromJson(e))
+          .map((e) => TicketOptions.fromJson(e))
           .toList();
   }
 
@@ -150,7 +150,7 @@ void setTeacher(FilterOption? option){
 
       "title": classTitleController.text.trim(),
       "description": descriptionController.text.trim(),
-      "date": HelperFunction.formatDate(dateController.text),
+      "date": HelperFunction.formatApiDate(dateController.text),
       "time": timeController.text.trim(),
       "duration": durationController.text.trim(),
       "subject_id": selectedSubject?.id,
@@ -162,6 +162,7 @@ void setTeacher(FilterOption? option){
       "location": locationController.text.trim(),
       "teacher_profile_id" : selectedTeacher?.id
   };
+
 
  Future<void> createClasses(BuildContext context) async {
    if(!formKey.currentState!.validate()) return;
@@ -179,7 +180,9 @@ void setTeacher(FilterOption? option){
            title: AppText.success,
            message: response['message'],
            positiveButtonText: AppText.ok,
-           onPositivePressed: (){},
+           onPositivePressed: (){
+             resetForm();
+           },
            dismissible: false,
            icon: FontAwesomeIcons.circleCheck
        );
@@ -211,11 +214,38 @@ void setTeacher(FilterOption? option){
          icon: FontAwesomeIcons.triangleExclamation,
        );
      }
+   }catch(e){
+     CustomDialog.show(
+       context,
+       title: AppText.error,
+       message: e.toString(),
+       positiveButtonText: AppText.retry,
+       onPositivePressed: () {},
+       icon: FontAwesomeIcons.triangleExclamation,
+     );
    }finally{
      _isLoading = false;
      notifyListeners();
    }
  }
 
+
+ void resetForm(){
+   formKey.currentState?.reset();
+   classTitleController.clear();
+   descriptionController.clear();
+   dateController.clear();
+   timeController.clear();
+   durationController.clear();
+   maxStudentsController.clear();
+   priceController.clear();
+   locationController.clear();
+   selectedTeacher == null;
+   selectedSubject == null;
+   selectedExam == null;
+   selectedExamCategory == null;
+   selectedType == null;
+   notifyListeners();
+ }
 
 }

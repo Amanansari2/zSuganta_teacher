@@ -34,6 +34,26 @@ class HelperFunction {
       return date.toString();
     }
   }
+
+
+  static String formatApiDate(dynamic date) {
+    try {
+      DateTime parsedDate;
+
+      if (date is String) {
+        parsedDate = DateFormat('dd-MM-yyyy').parse(date);
+      } else if (date is DateTime) {
+        parsedDate = date;
+      } else {
+        throw Exception("Invalid date type");
+      }
+      return DateFormat('yyyy-MM-dd').format(parsedDate);
+    } catch (e) {
+      return date.toString();
+    }
+  }
+
+
   static bool parseBool(dynamic value) {
     if (value is bool) return value;
     if (value is String) {

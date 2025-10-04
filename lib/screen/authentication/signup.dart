@@ -245,7 +245,7 @@ class SignUpScreen extends StatelessWidget {
                                           ),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () async {
-                                              final uri = Uri.parse("https://www.suganta.com/terms");
+                                              final uri = Uri.parse("https://www.suganta.com/terms-and-conditions");
                                               if (await canLaunchUrl(uri)) {
                                                 await launchUrl(uri, mode: LaunchMode.externalApplication);
                                               }
@@ -260,7 +260,7 @@ class SignUpScreen extends StatelessWidget {
                                           ),
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () async {
-                                              final uri = Uri.parse("https://www.suganta.com/privacy");
+                                              final uri = Uri.parse("https://www.suganta.com/privacy-and-policies");
                                               if (await canLaunchUrl(uri)) {
                                                 await launchUrl(uri, mode: LaunchMode.externalApplication);
                                               }
@@ -345,16 +345,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
 
-
-
-
-
-
-
-
-
-
-
+                    const SizedBox(height: Sizes.spaceBtwSections),
 
 
                   ],

@@ -1,13 +1,16 @@
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/providers/accounts/institute_information_provider.dart';
+import 'package:z_tutor_suganta/providers/accounts/logout_provider.dart';
 import 'package:z_tutor_suganta/providers/accounts/social_link_provider.dart';
 import 'package:z_tutor_suganta/providers/accounts/teaching_information_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/get_user_profile_provider.dart';
+import 'package:z_tutor_suganta/providers/classes/all_classes_provider.dart';
 import 'package:z_tutor_suganta/providers/classes/classes_provider.dart';
 import 'package:z_tutor_suganta/providers/support_screen/all_ticket_provider.dart';
 import 'package:z_tutor_suganta/providers/support_screen/support_screen_provider.dart';
 import 'package:z_tutor_suganta/providers/support_screen/ticket_details_provider.dart';
 import 'package:z_tutor_suganta/screen/home/navigations/navigation_provider.dart';
+import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
 
 import '../accounts/sessions_provider.dart';
@@ -18,8 +21,14 @@ class AppProvider {
     ChangeNotifierProvider<ThemeProvider>(
         create: (_) => ThemeProvider()),
 
+    // ChangeNotifierProvider<UserSessionProvider>(
+    //     create: (_) => UserSessionProvider()),
+
     ChangeNotifierProvider<GetUserProfileProvider>(
         create: (_) => GetUserProfileProvider()),
+
+    ChangeNotifierProvider<LogoutProvider>(
+        create: (_) => LogoutProvider()),
 
     ChangeNotifierProvider<SocialLinkProvider>(
         create: (_) => SocialLinkProvider()),
@@ -38,6 +47,11 @@ class AppProvider {
 
     ChangeNotifierProvider<AllTicketProvider>(
         create: (_) => AllTicketProvider()),
+
+    ChangeNotifierProvider<AllClassesProvider>(
+        create: (_) => AllClassesProvider()),
+
+
 
     ChangeNotifierProvider<TicketDetailsProvider>(
         create: (_) => TicketDetailsProvider()),

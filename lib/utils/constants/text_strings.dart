@@ -1,11 +1,11 @@
 class AppText{
-  static const String onBoardingTitle1 = "choose your Product";
-  static const String onBoardingTitle2 = "select Payment Method";
-  static const String onBoardingTitle3 = "Deliver at your Door step";
+  static const String onBoardingTitle1 = "Manage Everything Easily";
+  static const String onBoardingTitle2 = "Get Support Instantly";
+  static const String onBoardingTitle3 = "Track Your Activities";
 
-  static const String onBoardingSubTitle1 = "Welcome To a World of Limitless Choices - Your Prefect product Awaits!";
-  static const String onBoardingSubTitle2 = "For Seamless transaction, Choose your payment Path - your Convenience, Our Priority!";
-  static const String onBoardingSubTitle3 = "From Our Doorstep to Yours - swift, Secure, and Contactless Delivery!";
+  static const String onBoardingSubTitle1 = "Create and organize your classes effortlessly. Stay in control of your teaching journey anytime, anywhere.";
+  static const String onBoardingSubTitle2 = "Need help? Raise a support ticket and get quick assistance from our team.";
+  static const String onBoardingSubTitle3 = "Keep an eye on your sessions, updates, and progress — all in one simple dashboard.";
 
   static const String getStartedNow = "Get Started Now";
   static const String createYourAccount = "Let's Create your account, find the perfect education";
@@ -59,6 +59,9 @@ class AppText{
   static const String termsOfUse = "Terms of Use ";
   static const String and = "and ";
   static const String privacyPolicy = "Privacy Policy";
+  static const String termsCondition = "Terms & Conditions";
+  static const String knowYourRights = "Know your rights and responsibilities before proceeding.";
+  static const String collectPersonalInformation = "Learn how we collect and protect your personal information.";
 
   static const String signUp = "Sign Up";
   static const String signIn = "Sign In";
@@ -219,6 +222,7 @@ class AppText{
   static const String messageDetailed = "Please provider detailed information about your issue. Include any relevant details, steps to reproduce, and what you've already tried...";
 
 
+
   static const String needHelp = "Need Help ?";
   static const String everythingNeedToKnow = "Everything you need to know about creating effective support tickets";
 
@@ -288,6 +292,9 @@ class AppText{
   static const String supportTickets = "Support Tickets";
   static const String manageTrackTickets = "You can manage and track your support requests";
 
+  static const String allClasses = "All Classes";
+  static const String manageTrackClasses = "You can manage and track your created classes";
+
   static const String profileCompletion = "Profile Completion: ";
   static const String incompleteFields = "Incomplete Fields";
   static const String allFieldsCompleted = "All Fields Completed!";
@@ -354,6 +361,30 @@ class AppText{
   static const String scheduleUpdateRegularly = "Keep your schedule updated regularly";
   static const String locationMeetingLink = "Location / Meeting Link";
   static const String physicalMeetingLink = "Physical address or online Meeting Link";
+
+  static const String upcoming = "Upcoming";
+  static const String completed = "Completed";
+  static const String canceled = "Canceled";
+  static const String noClassesFound = "No classes found";
+  static const String title = "Title";
+  static const String dateTime = "Date & Time";
+  static const String viewClassDetails = "View Class Details";
+  static const String classDetails = "Class Details";
+  static const String edit = "Edit";
+  static const String teacherName = "Teacher name";
+  static const String classStatistics = "Class Statistics";
+  static const String enrolledStudents = "Enrolled Students";
+  static const String availableSeats = "Available Seats";
+  static const String markAsComplete = "Mark as Complete";
+  static const String cancelClass = "Cancel Class";
+  static const String editClassDetails = "Edit Class Details";
+
+  static const String logout = "Logout";
+  static const String signOutFromYourAccount = "Sign out from your account";
+  static const String currentDevice = "Current Device";
+  static const String allDevices = "All Devices";
+
+
 
 
 

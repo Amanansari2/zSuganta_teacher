@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -59,18 +60,20 @@ class UpdateProfileProvider extends ChangeNotifier{
 
   Future<void> pickProfileImage(BuildContext context) async {
     try {
-      PermissionStatus status;
+      PermissionStatus permissionStatus = PermissionStatus.denied;
 
       if (Platform.isAndroid) {
-        if (await _isAndroid13OrAbove()) {
-          status = await Permission.photos.request();
-        } else {
-          status = await Permission.storage.request();
+        final androidInfo = await DeviceInfoPlugin().androidInfo;
+        if(androidInfo.version.sdkInt <= 32){
+          permissionStatus = await Permission.storage.request();
+        }else{
+          permissionStatus = await Permission.photos.request();
         }
 
-        if (status.isDenied) {
+
+        if (permissionStatus.isDenied) {
           return;
-        } else if (status.isPermanentlyDenied) {
+        } else if (permissionStatus.isPermanentlyDenied) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("Permission permanently denied. Enable it in settings."),
@@ -106,14 +109,7 @@ class UpdateProfileProvider extends ChangeNotifier{
     }
   }
 
-  Future<bool> _isAndroid13OrAbove() async {
-    try {
-      String version = Platform.operatingSystemVersion;
-      return version.contains("13");
-    } catch (_) {
-      return false;
-    }
-  }
+
 
 
 

@@ -19,8 +19,8 @@ Widget containerWithIconRoute({
 }) {
   final dark = context.watch<ThemeProvider>().isDarkMode;
   return Container(
-    width: 180,
-    height: 270,
+    width: 160,
+    height: 290,
     decoration: BoxDecoration(
       color: dark ? AppColors.black : AppColors.white,
       borderRadius: BorderRadius.circular(12),
@@ -44,6 +44,7 @@ Widget containerWithIconRoute({
           style: Theme.of(context).textTheme.bodyLarge,),
         SizedBox(height: Sizes.defaultSpace,),
         CustomButton(
+          fontSize: 10,
           text: buttonText, onPressed:onPressed,
           color: dark ? AppColors.blue : AppColors.orange,
         )

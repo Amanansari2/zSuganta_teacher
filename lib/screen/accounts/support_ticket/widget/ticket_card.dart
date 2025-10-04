@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/models/accounts/tickets/ticket_model_list.dart';
 import 'package:z_tutor_suganta/utils/constants/sizes.dart';
@@ -19,8 +20,13 @@ class TicketCard extends StatelessWidget {
     required this.onPressed
   });
 
-  String formatDate(DateTime? dt) =>
-      dt != null ? dt.toLocal().toString().split('.').first : '—';
+
+
+  String formatDate(DateTime? dt) {
+    if (dt == null) return '—';
+    return DateFormat('yyyy-MM-dd HH:mm').format(dt.toLocal());
+  }
+
 
   String capitalizeFirstWord(String text) {
     if (text.isEmpty) return text;
@@ -110,12 +116,11 @@ class TicketCard extends StatelessWidget {
           Divider( color:  dark? AppColors.white.withOpacity(0.5) : AppColors.black.withOpacity(0.5),),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0, ),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0, ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                   Text(
                     AppText.status,
@@ -143,33 +148,36 @@ class TicketCard extends StatelessWidget {
                     ]
                 ),
 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppText.category,
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color:  dark? AppColors.white.withOpacity(0.5) : AppColors.black.withOpacity(0.5),
-                        ),
-                      ),
-                      Text(
-                        capitalizeFirstWord(ticket.category),
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
+                SizedBox(width: 30,),
 
-                      const SizedBox(height: Sizes.defaultSpace,),
-
-                      Text(
-                        AppText.updatedAt,
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color:  dark? AppColors.white.withOpacity(0.5) : AppColors.black.withOpacity(0.5),
+                Expanded(
+                  child: Column(
+                      children: [
+                        Text(
+                          AppText.category,
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color:  dark? AppColors.white.withOpacity(0.5) : AppColors.black.withOpacity(0.5),
+                          ),
                         ),
-                      ),
-                      Text(
-                        capitalizeFirstWord(formatDate(ticket.updatedAt)),
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    ]
+                        Text(
+                          capitalizeFirstWord(ticket.category),
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                  
+                        const SizedBox(height: Sizes.defaultSpace,),
+                  
+                        Text(
+                          AppText.updatedAt,
+                          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color:  dark? AppColors.white.withOpacity(0.5) : AppColors.black.withOpacity(0.5),
+                          ),
+                        ),
+                        Text(
+                          capitalizeFirstWord(formatDate(ticket.updatedAt)),
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                      ]
+                  ),
                 )
               ],
             ),

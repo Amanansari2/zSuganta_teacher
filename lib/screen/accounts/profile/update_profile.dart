@@ -312,6 +312,9 @@ class UpdateProfileScreen extends StatelessWidget {
                               ),
                             ),
 
+                            SizedBox(height: Sizes.spaceBtwSections,),
+
+
                           ],
                         ),
                       ),

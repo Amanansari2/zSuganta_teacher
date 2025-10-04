@@ -133,42 +133,22 @@ class _ClassesScreenState extends State<ClassesScreen> {
 
                     SizedBox(height: Sizes.defaultSpace),
 
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
+
                         containerWithIconRoute(
                           context: context,
                           icon: FontAwesomeIcons.chalkboardTeacher,
                           title: AppText.classes,
                           subTitle: AppText.manageClasses,
                           buttonText: AppText.viewClasses,
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushNamed('classListScreen');
+                          },
                         ),
 
-                        if (userRole == 'institute' || userRole == 'university')
-                          containerWithIconRoute(
-                            context: context,
-                            icon: FontAwesomeIcons.userPlus,
-                            title: AppText.teachers,
-                            subTitle: AppText.manageTeachers,
-                            buttonText: AppText.viewTeacher,
-                            onPressed: () {},
-                          ),
-                      ],
-                    ),
 
-                    SizedBox(height: Sizes.defaultSpace),
 
-                    if (userRole == 'institute' || userRole == 'university')
-                      containerWithIconRoute(
-                        context: context,
-                        icon: FontAwesomeIcons.building,
-                        title: AppText.branches,
-                        subTitle: AppText.manageBranches,
-                        buttonText: AppText.viewBranches,
-                        onPressed: () {},
-                      ),
+
+
 
                     Divider(
                       color: dark
@@ -177,7 +157,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
                     ),
                     SizedBox(height: Sizes.defaultSpace),
 
-                    AppThemeSwitcherButton(),
+
 
 
                     Container(
@@ -214,6 +194,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
                                   ),
                                 ),
 
+                                if(userRole!= 'teacher')
                                 Column(
                                   children: [
                                     Align(
@@ -267,6 +248,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
                                         }
                                         return null;
                                       },
+
                                     ),
                                   ],
                                 ),
@@ -467,7 +449,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
 
                                     const SizedBox(height: Sizes.spaceBtwItems),
 
-                                    CustomDropdown<FilterOption>(
+                                    CustomDropdown<TicketOptions>(
                                       key: ValueKey(provider.selectedType?.id),
                                       items: provider.type,
                                       selected: provider.selectedType,
@@ -623,7 +605,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
                                   child: CustomButton(
                                     text: AppText.createClass,
                                     onPressed: (){
-                                      if(!provider.isLoading){
+                                        if(!provider.isLoading){
                                         provider.createClasses(context);
                                       }
                                     },

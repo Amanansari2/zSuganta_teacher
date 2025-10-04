@@ -42,8 +42,21 @@ class ApiUrls{
 
 //home
  static const String profileCompletionUrl = "/dashboard/profile/completion";
+
+ //classes
  static const String classOptionsUrl = "/options/5";
  static const String createClassUrl = "/classes";
+ static const String getAllClassUrl = "/classes";
+ static const String getupComingClassUrl = "/classes/upcoming";
+ static const String getCompletedClassUrl = "/classes/completed";
+ static const String getCancelledClassUrl = "/classes/cancelled";
+ static const String completeClassUrl = "/classes";
+ static const String cancelClassUrl = "/classes/cancel";
+ static const String editClassUrl = "/classes";
+
+//logout
+ static const String logoutCurrentDeviceUrl = "/auth/logout";
+ static const String logoutAllDevicesUrl = "/auth/logout-all-devices";
 
 
 }

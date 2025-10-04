@@ -456,6 +456,9 @@ class AuthenticationRepo {
     }
   }
 
+
+  //-------------------------------->>>>>>>>>>>>>Class Section<<<<<<<<<<<<<<
+
   Future<Map<String, dynamic>> getClassOptions() async{
     try{
       final response = await getMethod.getRequest(
@@ -488,6 +491,176 @@ class AuthenticationRepo {
       };
     }
   }
+
+  Future<Map<String, dynamic>> getClasses({int page = 1}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getAllClassUrl}?page=$page",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> getUpcomingClasses({int page = 1}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getupComingClassUrl}?page=$page",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> getCompletedClasses({int page = 1}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getCompletedClassUrl}?page=$page",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+
+  Future<Map<String, dynamic>> getCancelledClasses({int page = 1}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getCancelledClassUrl}?page=$page",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> getClassDetails({required int classId}) async {
+    try {
+      final response = await getMethod.getRequest(
+        endpoint: "${ApiUrls.getAllClassUrl}/$classId",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during get sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> completeClass({required int classId}) async {
+    try {
+      final response = await postMethod.postRequest(
+        data: {},
+        endpoint: "${ApiUrls.completeClassUrl}/$classId/complete",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during complete sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> cancelClass({required int classId}) async {
+    try {
+      final response = await postMethod.postRequest(
+        data: {},
+        endpoint: "${ApiUrls.cancelClassUrl}/$classId",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during cancel sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> editClass(Map<String, dynamic> data,{required int classId}) async {
+    try {
+      final response = await postMethod.postRequest(
+        data: data,
+        endpoint: "${ApiUrls.editClassUrl}/$classId",
+        requireAuth: true,
+      );
+      return response;
+    } catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during edit sessions: $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> logoutFromCurrentDevice() async {
+    try{
+      final response = await postMethod.postRequest(
+          endpoint:ApiUrls.logoutCurrentDeviceUrl,
+          data: {},
+      requireAuth:  true
+      );
+      return response;
+
+    }catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during logout current device : $e',
+      };
+    }
+  }
+
+  Future<Map<String, dynamic>> logoutFromAllDevices() async{
+    try{
+      final response = await postMethod.postRequest(
+          endpoint: ApiUrls.logoutAllDevicesUrl,
+          data: {},
+      requireAuth: true
+      );
+      return response;
+    }catch (e) {
+      return {
+        'status': 'error',
+        'code': 500,
+        'message': 'Exception during logout current device : $e',
+      };
+    }
+
+  }
+
+
 
 
 }
