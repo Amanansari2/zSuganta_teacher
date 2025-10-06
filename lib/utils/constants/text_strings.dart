@@ -1,11 +1,11 @@
 class AppText{
-  static const String onBoardingTitle1 = "Manage Everything Easily";
-  static const String onBoardingTitle2 = "Get Support Instantly";
-  static const String onBoardingTitle3 = "Track Your Activities";
+  static const String onBoardingTitle1 = "SuGanta – Tutor Jobs";
+  static const String onBoardingTitle2 = "SuGanta – Tutor Connect";
+  static const String onBoardingTitle3 = "SuGanta Teaching Hub";
 
-  static const String onBoardingSubTitle1 = "Create and organize your classes effortlessly. Stay in control of your teaching journey anytime, anywhere.";
-  static const String onBoardingSubTitle2 = "Need help? Raise a support ticket and get quick assistance from our team.";
-  static const String onBoardingSubTitle3 = "Keep an eye on your sessions, updates, and progress — all in one simple dashboard.";
+  static const String onBoardingSubTitle1 = "Find subject-wise tutoring work, create profiles, and connect with students.";
+  static const String onBoardingSubTitle2 = "Verified tutor profiles with flexible teaching and direct student connections.";
+  static const String onBoardingSubTitle3 = "Create a verified tutor profile and connect with genuine learners.";
 
   static const String getStartedNow = "Get Started Now";
   static const String createYourAccount = "Let's Create your account, find the perfect education";
