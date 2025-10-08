@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:z_tutor_suganta/models/accounts/tickets/ticket_details_model.dart';
 import 'package:z_tutor_suganta/models/classes/class_detailed_model.dart';
 import 'package:z_tutor_suganta/providers/authentication/forgot_password_provider.dart';
 import 'package:z_tutor_suganta/providers/authentication/signin_provider.dart';
@@ -16,6 +15,7 @@ import 'package:z_tutor_suganta/screen/accounts/sessions/sessions_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/support_ticket/support_ticket_list.dart';
 import 'package:z_tutor_suganta/screen/accounts/support_ticket/ticket_detail_screen.dart';
 import 'package:z_tutor_suganta/screen/accounts/teaching_information/teaching_information_screen.dart';
+import 'package:z_tutor_suganta/screen/accounts/theme/theme_switch.dart';
 import 'package:z_tutor_suganta/screen/authentication/resend_email.dart';
 import 'package:z_tutor_suganta/screen/authentication/signin.dart';
 import 'package:z_tutor_suganta/screen/authentication/signup.dart';
@@ -193,6 +193,12 @@ class AppRouter{
             builder: (context, state) => SessionsScreen(),
           ),
 
+
+          GoRoute(
+            name: 'themeSwitchScreen',
+            path: '/themeSwitchScreen',
+            builder: (context, state) => ThemeSwitchScreen(),
+          ),
 
         ],
         debugLogDiagnostics: true

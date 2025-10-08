@@ -1,12 +1,10 @@
 import 'dart:io';
 
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/repository/authentication_repo.dart';
 import 'package:z_tutor_suganta/utils/constants/text_strings.dart';
@@ -60,29 +58,29 @@ class UpdateProfileProvider extends ChangeNotifier{
 
   Future<void> pickProfileImage(BuildContext context) async {
     try {
-      PermissionStatus permissionStatus = PermissionStatus.denied;
-
-      if (Platform.isAndroid) {
-        final androidInfo = await DeviceInfoPlugin().androidInfo;
-        if(androidInfo.version.sdkInt <= 32){
-          permissionStatus = await Permission.storage.request();
-        }else{
-          permissionStatus = await Permission.photos.request();
-        }
-
-
-        if (permissionStatus.isDenied) {
-          return;
-        } else if (permissionStatus.isPermanentlyDenied) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Permission permanently denied. Enable it in settings."),
-            ),
-          );
-          openAppSettings();
-          return;
-        }
-      }
+      // PermissionStatus permissionStatus = PermissionStatus.denied;
+      //
+      // if (Platform.isAndroid) {
+      //   final androidInfo = await DeviceInfoPlugin().androidInfo;
+      //   if(androidInfo.version.sdkInt <= 32){
+      //     permissionStatus = await Permission.storage.request();
+      //   }else{
+      //     permissionStatus = await Permission.photos.request();
+      //   }
+      //
+      //
+      //   if (permissionStatus.isDenied) {
+      //     return;
+      //   } else if (permissionStatus.isPermanentlyDenied) {
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //       const SnackBar(
+      //         content: Text("Permission permanently denied. Enable it in settings."),
+      //       ),
+      //     );
+      //     openAppSettings();
+      //     return;
+      //   }
+      // }
 
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.image,

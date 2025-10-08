@@ -1,8 +1,6 @@
 import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class FilePickerRow extends StatefulWidget {
   final void Function(File? file)? onFileSelected;
@@ -37,29 +35,29 @@ class _FilePickerRowState extends State<FilePickerRow> {
   Future<void> _pickFile(BuildContext context) async {
 
     try {
-      PermissionStatus permissionStatus = PermissionStatus.denied;
-
-      if (Platform.isAndroid) {
-        final androidInfo = await DeviceInfoPlugin().androidInfo;
-        if (androidInfo.version.sdkInt <= 32) {
-          permissionStatus = await Permission.storage.request();
-        } else {
-          permissionStatus = await Permission.photos.request();
-        }
-
-        if (permissionStatus.isDenied) {
-          return;
-        } else if (permissionStatus.isPermanentlyDenied) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                  "Permission permanently denied. Enable it in settings."),
-            ),
-          );
-          openAppSettings();
-          return;
-        }
-      }
+      // PermissionStatus permissionStatus = PermissionStatus.denied;
+      //
+      // if (Platform.isAndroid) {
+      //   final androidInfo = await DeviceInfoPlugin().androidInfo;
+      //   if (androidInfo.version.sdkInt <= 32) {
+      //     permissionStatus = await Permission.storage.request();
+      //   } else {
+      //     permissionStatus = await Permission.photos.request();
+      //   }
+      //
+      //   if (permissionStatus.isDenied) {
+      //     return;
+      //   } else if (permissionStatus.isPermanentlyDenied) {
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //       const SnackBar(
+      //         content: Text(
+      //             "Permission permanently denied. Enable it in settings."),
+      //       ),
+      //     );
+      //     openAppSettings();
+      //     return;
+      //   }
+      // }
       setState(() {
         _error = null;
       });
@@ -97,14 +95,7 @@ class _FilePickerRowState extends State<FilePickerRow> {
     }
   }
 
-  Future<bool> _isAndroid13OrAbove() async {
-    try {
-      String version = Platform.operatingSystemVersion;
-      return version.contains("13");
-    } catch (_) {
-      return false;
-    }
-  }
+
 
   void _removeFile() {
     setState(() {

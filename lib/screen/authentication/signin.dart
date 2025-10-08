@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +8,7 @@ import 'package:z_tutor_suganta/providers/authentication/signin_provider.dart';
 import 'package:z_tutor_suganta/utils/constants/app_colors.dart';
 import 'package:z_tutor_suganta/utils/constants/sizes.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
+import 'package:z_tutor_suganta/utils/theme/theme_switcher_button.dart';
 import 'package:z_tutor_suganta/widgets/texts/custom_text_form_field.dart';
 import 'package:z_tutor_suganta/widgets/custom_button.dart';
 
@@ -20,6 +22,12 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
      final dark = context.watch<ThemeProvider>().isDarkMode;
+
+     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+         statusBarColor: Colors.transparent,
+     statusBarBrightness:  dark? Brightness.light : Brightness.dark,
+       statusBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+     ));
 
     return ChangeNotifierProvider(
       create: (_) => SignInProvider(),

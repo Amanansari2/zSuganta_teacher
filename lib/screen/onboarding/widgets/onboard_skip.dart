@@ -18,7 +18,7 @@ class OnBoardingSkip extends StatelessWidget {
 
     return Positioned(
       top: DeviceUtils.appBarHeight,
-        right: Sizes.defaultSpace,
+        right: Sizes.spaceBtwSections,
         child: TextButton(
             onPressed: ()  {
                provider.skipPage(context);

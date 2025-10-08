@@ -9,7 +9,6 @@ import 'package:z_tutor_suganta/utils/constants/text_strings.dart';
 import 'package:z_tutor_suganta/utils/helpers/helper_function.dart';
 import 'package:z_tutor_suganta/utils/helpers/user_sessions.dart';
 import 'package:z_tutor_suganta/utils/theme/provider/theme_provider.dart';
-import 'package:z_tutor_suganta/utils/theme/theme_switcher_button.dart';
 import 'package:z_tutor_suganta/widgets/containers/primary_header_container.dart';
 import 'package:z_tutor_suganta/widgets/custom_app_bar.dart';
 import 'package:z_tutor_suganta/widgets/custom_button.dart';
@@ -128,6 +127,15 @@ class AccountScreen extends StatelessWidget {
                           subTitle: AppText.newSecurePassword,
                           onTap: (){
                             context.pushNamed('resetPasswordScreen');
+                          },
+                        ),
+
+                        SettingMenuTile(
+                          icon: FontAwesomeIcons.circleHalfStroke,
+                          title: AppText.switchTheme,
+                          subTitle: AppText.customizeAppLook,
+                          onTap: (){
+                            context.pushNamed('themeSwitchScreen');
                           },
                         ),
 

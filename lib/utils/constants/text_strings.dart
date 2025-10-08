@@ -384,6 +384,11 @@ class AppText{
   static const String currentDevice = "Current Device";
   static const String allDevices = "All Devices";
 
+  static const String chooseTheme = "Choose your theme";
+  static const String selectTheme = "Select a theme to personalize your experience.";
+  static const String switchTheme = "Switch Theme";
+  static const String customizeAppLook = "Customize your app look — Light, Dark, or System default ";
+
 
 
 

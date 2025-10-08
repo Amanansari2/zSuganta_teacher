@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ import 'package:z_tutor_suganta/widgets/custom_button.dart';
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/text_strings.dart';
 import '../../utils/theme/provider/theme_provider.dart';
+import '../../utils/theme/theme_switcher_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -19,6 +21,11 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = context.watch<ThemeProvider>().isDarkMode;
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness:  dark? Brightness.light : Brightness.dark,
+      statusBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+    ));
 
     return ChangeNotifierProvider(
         create: (_) => ForgotPasswordProvider(),

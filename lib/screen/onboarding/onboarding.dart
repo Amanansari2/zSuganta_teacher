@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:z_tutor_suganta/screen/onboarding/provider/onboarding_provider.dart';
 import 'package:z_tutor_suganta/screen/onboarding/widgets/onboard_skip.dart';
@@ -9,6 +10,9 @@ import 'package:z_tutor_suganta/utils/constants/image_strings.dart';
 import 'package:z_tutor_suganta/utils/constants/sizes.dart';
 import 'package:z_tutor_suganta/utils/constants/text_strings.dart';
 import 'package:z_tutor_suganta/utils/theme/theme_switcher_button.dart';
+
+import '../../utils/device/device_utils.dart';
+import '../../utils/theme/provider/theme_provider.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -32,6 +36,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<OnBoardingProvider>();
+    final dark = context.watch<ThemeProvider>().isDarkMode;
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness:  dark? Brightness.light : Brightness.dark,
+      statusBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+    ));
     return Scaffold(
       body: Stack(
         children: [
@@ -61,6 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
 
           const OnBoardingSkip(),
+
 
           const OnboardingDotNavigation(),
 
